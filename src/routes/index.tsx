@@ -201,7 +201,6 @@ function Dashboard() {
                 <th className="text-left font-medium pb-2">Property</th>
                 <th className="text-left font-medium pb-2">Issue</th>
                 <th className="text-left font-medium pb-2">Manager</th>
-                <th className="text-left font-medium pb-2">Time open</th>
                 <th className="text-right font-medium pb-2">Action</th>
               </tr>
             </thead>
@@ -216,9 +215,6 @@ function Dashboard() {
                   </td>
                   <td className="py-3 max-w-[200px] truncate text-muted-foreground">{u.issue}</td>
                   <td className="py-3">{u.mgr}</td>
-                  <td className="py-3">
-                    <Pill tone={u.over ? "urgent" : "high"}>{u.over && <Flame className="size-3" />}{u.time}</Pill>
-                  </td>
                   <td className="py-3 text-right">
                     <button className="text-xs px-2 py-1 rounded-md bg-destructive/10 text-destructive font-medium">Escalate</button>
                   </td>
