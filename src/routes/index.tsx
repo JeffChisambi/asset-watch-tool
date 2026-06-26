@@ -4,6 +4,7 @@ import {
   ArrowUpRight, ArrowDownRight, Building2,
   ChevronRight, Calendar, Plus, Download, ChevronDown,
 } from "lucide-react";
+import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { DashboardShell, SectionCard, Pill } from "../components/DashboardShell";
 
 export const Route = createFileRoute("/")({
@@ -47,25 +48,75 @@ function Stat({ icon: Icon, label, value, sub, trend, tone = "primary" }: any) {
 }
 
 /* ---------- charts (pure SVG) ---------- */
+const trendData = [
+  { label: "1 Jan",  tickets: 4  },
+  { label: "",       tickets: 8  },
+  { label: "",       tickets: 11 },
+  { label: "",       tickets: 3  },
+  { label: "",       tickets: 2  },
+  { label: "",       tickets: 14 },
+  { label: "",       tickets: 18 },
+  { label: "8 Jan",  tickets: 19 },
+  { label: "",       tickets: 16 },
+  { label: "",       tickets: 13 },
+  { label: "",       tickets: 4  },
+  { label: "",       tickets: 3  },
+  { label: "",       tickets: 16 },
+  { label: "",       tickets: 20 },
+  { label: "15 Jan", tickets: 22 },
+  { label: "",       tickets: 18 },
+  { label: "",       tickets: 15 },
+  { label: "",       tickets: 5  },
+  { label: "",       tickets: 3  },
+  { label: "",       tickets: 18 },
+  { label: "",       tickets: 23 },
+  { label: "22 Jan", tickets: 25 },
+  { label: "",       tickets: 20 },
+  { label: "",       tickets: 17 },
+  { label: "",       tickets: 6  },
+  { label: "",       tickets: 4  },
+  { label: "",       tickets: 21 },
+  { label: "",       tickets: 26 },
+  { label: "29 Jan", tickets: 28 },
+  { label: "",       tickets: 24 },
+  { label: "",       tickets: 22 },
+];
+
 function TrendChart() {
-  const data = [12, 18, 14, 22, 19, 26, 24, 30, 27, 34, 31, 38, 35, 41, 39, 46];
-  const max = Math.max(...data), min = Math.min(...data);
-  const w = 100, h = 40;
-  const pts = data.map((v, i) => `${(i / (data.length - 1)) * w},${h - ((v - min) / (max - min)) * h}`).join(" ");
-  const area = `M0,${h} L${pts.split(" ").join(" L")} L${w},${h} Z`.replace("L0,", "0,");
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-44 overflow-visible" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="oklch(0.58 0.21 260)" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="oklch(0.58 0.21 260)" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      {[0, 1, 2, 3].map((i) => <line key={i} x1="0" x2={w} y1={(h / 3) * i} y2={(h / 3) * i} stroke="oklch(0.92 0.008 250)" strokeWidth="0.2" strokeDasharray="0.5,0.8" />)}
-      <path d={area} fill="url(#g1)" />
-      <polyline points={pts} fill="none" stroke="oklch(0.58 0.21 260)" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
-      <circle cx={(9 / 15) * w} cy={h - ((data[9] - min) / (max - min)) * h} r="1.2" fill="oklch(0.58 0.21 260)" stroke="white" strokeWidth="0.5" />
-    </svg>
+    <ResponsiveContainer width="100%" height={176}>
+      <AreaChart data={trendData} margin={{ top: 4, right: 12, left: 12, bottom: 0 }}>
+        <defs>
+          <linearGradient id="trendGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="oklch(0.58 0.21 260)" stopOpacity={0.28} />
+            <stop offset="100%" stopColor="oklch(0.58 0.21 260)" stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        <XAxis
+          dataKey="label"
+          tick={{ fontSize: 11, fill: "oklch(0.55 0.02 250)" }}
+          axisLine={false}
+          tickLine={false}
+          interval={0}
+        />
+        <Tooltip
+          contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid oklch(0.92 0.008 250)", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
+          itemStyle={{ color: "oklch(0.58 0.21 260)" }}
+          labelStyle={{ fontWeight: 600 }}
+          formatter={(v: number) => [v, "Tickets"]}
+          labelFormatter={(l) => l || ""}
+        />
+        <Area
+          type="monotone"
+          dataKey="tickets"
+          stroke="oklch(0.58 0.21 260)"
+          strokeWidth={2}
+          fill="url(#trendGrad)"
+          dot={false}
+          activeDot={{ r: 4, fill: "oklch(0.58 0.21 260)", stroke: "white", strokeWidth: 2 }}
+        />
+      </AreaChart>
+    </ResponsiveContainer>
   );
 }
 
@@ -156,14 +207,9 @@ function Dashboard() {
         <div className="lg:col-span-2 flex flex-col gap-6">
           <SectionCard title="Maintenance Trend"
             action={<div className="flex items-center gap-2 text-xs text-muted-foreground"><span className="size-2 rounded-full bg-primary" />Tickets created<span className="ml-3">Avg resolution <span className="text-foreground font-semibold ml-1">2.4d</span></span></div>}>
-            <div className="flex items-end gap-6 mb-2">
-              <div>
-                <p className="text-3xl font-bold tracking-tight">446</p>
-                <p className="text-xs text-success font-medium mt-0.5 inline-flex items-center gap-1"><ArrowUpRight className="size-3" />24.4% vs last period</p>
-              </div>
-              <div className="ml-auto flex gap-6 text-xs text-muted-foreground">
-                <span>1 Jan</span><span>8 Jan</span><span>15 Jan</span><span>22 Jan</span><span>29 Jan</span>
-              </div>
+            <div className="mb-2">
+              <p className="text-3xl font-bold tracking-tight">446</p>
+              <p className="text-xs text-success font-medium mt-0.5 inline-flex items-center gap-1"><ArrowUpRight className="size-3" />24.4% vs last period</p>
             </div>
             <TrendChart />
             <div className="mt-5 grid grid-cols-3 gap-3 border-t border-border pt-4">
