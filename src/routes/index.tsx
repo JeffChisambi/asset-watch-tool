@@ -245,11 +245,11 @@ function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex">
+    <div className="h-screen bg-background text-foreground flex overflow-hidden">
       <Sidebar />
-      <main className="flex-1 min-w-0 flex flex-col">
+      <main className="flex-1 min-w-0 flex flex-col overflow-hidden">
         <Topbar />
-        <div className="p-8 space-y-6">
+        <div className="flex-1 overflow-y-auto p-8 space-y-6">
           {/* Header */}
           <div className="flex flex-wrap items-center gap-3">
             <div>
