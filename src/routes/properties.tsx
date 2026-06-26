@@ -65,12 +65,8 @@ function Properties() {
           <thead className="text-[11px] uppercase tracking-wider text-muted-foreground">
             <tr className="border-b border-border">
               <th className="text-left font-medium pb-2">Property</th>
-              <th className="text-left font-medium pb-2">Type</th>
-              <th className="text-left font-medium pb-2">Zone</th>
               <th className="text-left font-medium pb-2">Manager</th>
               <th className="text-left font-medium pb-2">Open</th>
-              <th className="text-left font-medium pb-2">This month</th>
-              <th className="text-left font-medium pb-2">Common issue</th>
               <th className="text-left font-medium pb-2">Health</th>
               <th className="text-right font-medium pb-2">Action</th>
             </tr>
@@ -84,12 +80,8 @@ function Properties() {
                     <span className="font-medium">{p.name}</span>
                   </div>
                 </td>
-                <td className="py-3"><Pill tone="muted">{p.type}</Pill></td>
-                <td className="py-3 text-muted-foreground">{p.zone}</td>
                 <td className="py-3">{p.mgr}</td>
                 <td className="py-3"><Pill tone={p.open > 10 ? "urgent" : "muted"}>{p.open}</Pill></td>
-                <td className="py-3 text-muted-foreground">{p.month}</td>
-                <td className="py-3">{p.issue}</td>
                 <td className="py-3">
                   <div className="flex items-center gap-2">
                     <div className="w-24 h-1.5 rounded-full bg-muted overflow-hidden">
