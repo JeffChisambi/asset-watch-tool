@@ -427,60 +427,6 @@ function FinanceDashboard() {
         </div>
       </SectionCard>
 
-      {/* ── collection analytics + reports ── */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        {/* collection analytics */}
-        <SectionCard title="Collection Analytics" className="xl:col-span-2">
-          <div className="flex items-end justify-between mb-4">
-            <div>
-              <p className="text-2xl font-bold">79%</p>
-              <p className="text-xs text-muted-foreground">Collection rate — June 2026</p>
-            </div>
-            <div className="flex items-center gap-4 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-sm bg-primary inline-block" /> Collected</span>
-              <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-sm bg-primary/15 inline-block" /> Target</span>
-            </div>
-          </div>
-          <CollectionBar />
-          <div className="mt-4 grid grid-cols-3 gap-3">
-            {[
-              { label: "Avg Collection Time", value: "3.2 days" },
-              { label: "Total Properties",     value: "142" },
-              { label: "Paying On Time",       value: "81%" },
-            ].map((s) => (
-              <div key={s.label} className="rounded-xl bg-muted/50 px-3 py-2.5 text-center">
-                <p className="text-sm font-bold">{s.value}</p>
-                <p className="text-[11px] text-muted-foreground mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </SectionCard>
-
-        {/* reports & export */}
-        <SectionCard title="Reports & Export">
-          <div className="space-y-2">
-            {[
-              { label: "Daily Payment Report",           icon: Banknote },
-              { label: "Monthly Rent Collection",        icon: CreditCard },
-              { label: "Outstanding Balances Report",    icon: AlertCircle },
-              { label: "Overdue Payments Report",        icon: Clock },
-              { label: "Lease Renewal Report",           icon: CalendarDays },
-              { label: "Payment Reminder History",       icon: Send },
-              { label: "Tenant Account Statement",       icon: FileText },
-            ].map((r) => (
-              <button key={r.label} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-border hover:bg-muted/50 transition group text-left">
-                <r.icon className="size-4 text-muted-foreground group-hover:text-primary transition shrink-0" />
-                <span className="flex-1 text-sm text-foreground">{r.label}</span>
-                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
-                  <Download className="size-3.5 text-muted-foreground" />
-                  <ChevronRight className="size-3.5 text-muted-foreground" />
-                </div>
-              </button>
-            ))}
-          </div>
-        </SectionCard>
-      </div>
-
       {/* ── quick actions ── */}
       <div className="rounded-2xl border border-border bg-card p-5 flex items-center gap-3 flex-wrap shadow-[0_1px_2px_rgba(16,24,40,0.04)]">
         <span className="text-sm font-semibold text-foreground mr-2">Quick Actions</span>
