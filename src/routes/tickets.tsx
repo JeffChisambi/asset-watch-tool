@@ -68,10 +68,10 @@ function Tickets() {
       {/* Summary bar */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
-          { icon: Wrench, label: "Total Open", value: "36", tone: "bg-primary/10 text-primary" },
+          { icon: Wrench, label: "Total Open", value: "36", tone: "bg-muted text-muted-foreground" },
           { icon: AlertTriangle, label: "Urgent", value: "5", tone: "bg-destructive/10 text-destructive" },
-          { icon: Clock, label: "In Progress", value: "14", tone: "bg-info/10 text-info" },
-          { icon: CheckCircle2, label: "Resolved Today", value: "14", tone: "bg-success/10 text-success" },
+          { icon: Clock, label: "In Progress", value: "14", tone: "bg-muted text-muted-foreground" },
+          { icon: CheckCircle2, label: "Resolved Today", value: "14", tone: "bg-muted text-muted-foreground" },
         ].map(({ icon: Icon, label, value, tone }) => (
           <div key={label} className="rounded-2xl bg-card border border-border p-4 flex items-center gap-3 shadow-[0_1px_2px_rgba(16,24,40,0.04)]">
             <span className={`size-9 grid place-items-center rounded-full ${tone}`}><Icon className="size-4" /></span>
