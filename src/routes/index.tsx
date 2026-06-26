@@ -131,15 +131,30 @@ function TrendChart() {
 function WeekdayChart() {
   const days = [{ d: "Sun", v: 3 }, { d: "Mon", v: 8 }, { d: "Tue", v: 14 }, { d: "Wed", v: 6 }, { d: "Thu", v: 9 }, { d: "Fri", v: 5 }, { d: "Sat", v: 2 }];
   const max = 14;
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const duration = 900;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      setProgress(eased);
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, []);
+
   return (
     <div className="h-44 flex items-end gap-2 px-1">
       {days.map((d) => {
         const active = d.d === "Tue";
+        const animatedHeight = (d.v / max) * 100 * progress;
         return (
           <div key={d.d} className="flex-1 flex flex-col items-center gap-2 h-full">
             {active && <span className="text-xs font-semibold text-foreground -mb-1">{d.v}</span>}
             <div className="w-full flex-1 flex items-end">
-              <div className={`w-full rounded-md ${active ? "bg-primary" : "bg-muted"}`} style={{ height: `${(d.v / max) * 100}%` }} />
+              <div className={`w-full rounded-md ${active ? "bg-primary" : "bg-muted"}`} style={{ height: `${animatedHeight}%` }} />
             </div>
             <span className={`text-[11px] ${active ? "text-foreground font-medium" : "text-muted-foreground"}`}>{d.d}</span>
           </div>
