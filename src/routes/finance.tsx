@@ -203,8 +203,6 @@ function FinanceDashboard() {
                   <th className="text-left pb-2 pl-1 font-medium">Tenant</th>
                   <th className="text-left pb-2 font-medium">Property</th>
                   <th className="text-right pb-2 font-medium">Balance</th>
-                  <th className="text-left pb-2 font-medium">Due</th>
-                  <th className="text-left pb-2 font-medium">Status</th>
                   <th className="pb-2" />
                 </tr>
               </thead>
@@ -214,10 +212,6 @@ function FinanceDashboard() {
                     <td className="py-2.5 pl-1 font-medium text-foreground">{r.tenant}</td>
                     <td className="py-2.5 text-muted-foreground">{r.property}</td>
                     <td className="py-2.5 text-right font-semibold tabular-nums">{fmt(r.balance)}</td>
-                    <td className="py-2.5 text-muted-foreground">{r.due}</td>
-                    <td className="py-2.5">
-                      <span className={`text-xs font-semibold ${r.status === "Overdue" ? "text-foreground" : "text-muted-foreground font-normal"}`}>{r.status}</span>
-                    </td>
                     <td className="py-2.5 pr-1">
                       <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition justify-end">
                         <ActionBtn><Eye className="size-3.5" /></ActionBtn>
