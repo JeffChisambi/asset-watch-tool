@@ -59,9 +59,6 @@ function Tickets() {
           <button className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm">
             <Filter className="size-4" />Filter
           </button>
-          <button className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm">
-            <Plus className="size-4" />New ticket
-          </button>
           <button className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90">
             <Download className="size-4" />Export
           </button>
