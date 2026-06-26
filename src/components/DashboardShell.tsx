@@ -7,9 +7,9 @@ import {
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-screen bg-background text-foreground flex overflow-hidden">
+    <div className="h-screen bg-background text-foreground overflow-hidden">
       <Sidebar />
-      <main className="flex-1 min-w-0 flex flex-col overflow-hidden">
+      <main className="ml-64 h-screen min-w-0 flex flex-col overflow-hidden">
         <Topbar />
         <div className="flex-1 overflow-y-auto p-8 space-y-6">
           {children}
@@ -44,14 +44,14 @@ function Sidebar() {
   const isActive = (to?: string) => to ? path === to : false;
 
   return (
-    <aside className="w-64 shrink-0 bg-sidebar border-r border-sidebar-border flex flex-col">
+    <aside className="fixed inset-y-0 left-0 z-20 w-64 bg-sidebar border-r border-sidebar-border flex flex-col overflow-hidden">
       <div className="px-5 py-5 flex items-center gap-2">
         <div className="size-8 rounded-lg bg-primary grid place-items-center text-primary-foreground">
           <Wrench className="size-4" />
         </div>
         <span className="font-bold tracking-tight">FixOps</span>
       </div>
-      <nav className="px-3 flex-1 min-h-0 overflow-y-auto">
+      <nav className="px-3 flex-1 min-h-0 overflow-hidden">
         <ul className="space-y-0.5">
           {nav.map((i) => (
             <li key={i.label}>
