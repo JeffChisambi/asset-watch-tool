@@ -70,8 +70,7 @@ function Managers() {
               <tr key={m.name} className="border-b border-border last:border-0 hover:bg-muted/40 transition-colors">
                 <td className="py-3">
                   <div className="flex items-center gap-2.5">
-                    <div className={`size-8 rounded-full bg-gradient-to-br ${m.color} ring-2 ring-card`} />
-                    <span className="font-medium">{m.name}</span>
+                      <span className="font-medium">{m.name}</span>
                   </div>
                 </td>
                 <td className="py-3 text-muted-foreground">{m.zone}</td>
