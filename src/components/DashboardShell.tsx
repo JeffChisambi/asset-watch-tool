@@ -33,7 +33,6 @@ function Sidebar() {
     { icon: AlertTriangle, label: "Urgent", to: "/urgent", badge: "5" },
     { icon: ClipboardCheck, label: "Completions", to: "/completions" },
     { icon: Users, label: "Managers", to: "/managers" },
-    { icon: Users, label: "Technicians", to: "/technicians" },
     { icon: Building2, label: "Properties", to: "/properties" },
   ];
   const ops: NavItem[] = [

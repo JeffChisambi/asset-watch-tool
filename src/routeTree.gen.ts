@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UrgentRouteImport } from './routes/urgent'
 import { Route as TicketsRouteImport } from './routes/tickets'
-import { Route as TechniciansRouteImport } from './routes/technicians'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ManagersRouteImport } from './routes/managers'
@@ -41,11 +40,6 @@ const UrgentRoute = UrgentRouteImport.update({
 const TicketsRoute = TicketsRouteImport.update({
   id: '/tickets',
   path: '/tickets',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TechniciansRoute = TechniciansRouteImport.update({
-  id: '/technicians',
-  path: '/technicians',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReportsRoute = ReportsRouteImport.update({
@@ -170,7 +164,6 @@ export interface FileRoutesByFullPath {
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
-  '/technicians': typeof TechniciansRoute
   '/tickets': typeof TicketsRoute
   '/urgent': typeof UrgentRoute
 }
@@ -195,7 +188,6 @@ export interface FileRoutesByTo {
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
-  '/technicians': typeof TechniciansRoute
   '/tickets': typeof TicketsRoute
   '/urgent': typeof UrgentRoute
 }
@@ -221,7 +213,6 @@ export interface FileRoutesById {
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
-  '/technicians': typeof TechniciansRoute
   '/tickets': typeof TicketsRoute
   '/urgent': typeof UrgentRoute
 }
@@ -248,7 +239,6 @@ export interface FileRouteTypes {
     | '/managers'
     | '/properties'
     | '/reports'
-    | '/technicians'
     | '/tickets'
     | '/urgent'
   fileRoutesByTo: FileRoutesByTo
@@ -273,7 +263,6 @@ export interface FileRouteTypes {
     | '/managers'
     | '/properties'
     | '/reports'
-    | '/technicians'
     | '/tickets'
     | '/urgent'
   id:
@@ -298,7 +287,6 @@ export interface FileRouteTypes {
     | '/managers'
     | '/properties'
     | '/reports'
-    | '/technicians'
     | '/tickets'
     | '/urgent'
   fileRoutesById: FileRoutesById
@@ -324,7 +312,6 @@ export interface RootRouteChildren {
   ManagersRoute: typeof ManagersRoute
   PropertiesRoute: typeof PropertiesRoute
   ReportsRoute: typeof ReportsRoute
-  TechniciansRoute: typeof TechniciansRoute
   TicketsRoute: typeof TicketsRoute
   UrgentRoute: typeof UrgentRoute
 }
@@ -343,13 +330,6 @@ declare module '@tanstack/react-router' {
       path: '/tickets'
       fullPath: '/tickets'
       preLoaderRoute: typeof TicketsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/technicians': {
-      id: '/technicians'
-      path: '/technicians'
-      fullPath: '/technicians'
-      preLoaderRoute: typeof TechniciansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reports': {
@@ -516,7 +496,6 @@ const rootRouteChildren: RootRouteChildren = {
   ManagersRoute: ManagersRoute,
   PropertiesRoute: PropertiesRoute,
   ReportsRoute: ReportsRoute,
-  TechniciansRoute: TechniciansRoute,
   TicketsRoute: TicketsRoute,
   UrgentRoute: UrgentRoute,
 }
