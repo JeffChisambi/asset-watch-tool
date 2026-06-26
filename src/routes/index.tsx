@@ -125,12 +125,6 @@ function Sidebar() {
         <a className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/60"><Settings className="size-4" />Settings</a>
         <a className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/60"><LifeBuoy className="size-4" />Help & Support</a>
       </div>
-      <div className="m-3 rounded-2xl p-4 bg-gradient-to-br from-primary to-[oklch(0.35_0.18_265)] text-primary-foreground">
-        <div className="size-8 rounded-lg bg-white/15 grid place-items-center mb-2"><ShieldAlert className="size-4" /></div>
-        <p className="text-sm font-semibold">Upgrade to Pro</p>
-        <p className="text-xs opacity-80 mt-0.5">Unlock advanced SLA analytics & AI insights.</p>
-        <button className="mt-3 w-full rounded-lg bg-white/15 hover:bg-white/25 text-sm py-1.5 font-medium">Upgrade</button>
-      </div>
     </aside>
   );
 }
