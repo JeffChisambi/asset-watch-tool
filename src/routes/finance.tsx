@@ -65,6 +65,41 @@ function ActionBtn({ children, variant = "ghost" }: { children: React.ReactNode;
   return <button className={cls[variant]}>{children}</button>;
 }
 
+function PaymentHistoryRowMenu() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function handle(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handle);
+    return () => document.removeEventListener("mousedown", handle);
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative flex justify-end">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="size-7 grid place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition"
+      >
+        <MoreHorizontal className="size-4" />
+      </button>
+      {open && (
+        <div className="absolute right-0 top-8 z-50 w-44 rounded-xl border border-border bg-card shadow-lg py-1">
+          <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-muted transition text-foreground" onClick={() => setOpen(false)}>
+            <Eye className="size-3.5 text-muted-foreground" /> View details
+          </button>
+          <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-muted transition text-foreground" onClick={() => setOpen(false)}>
+            <FileText className="size-3.5 text-muted-foreground" /> View receipt
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function OverdueRowMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -433,7 +468,6 @@ function FinanceDashboard() {
                 <th className="text-left pb-2 pl-1 font-medium">Tenant</th>
                 <th className="text-left pb-2 font-medium">Property</th>
                 <th className="text-right pb-2 font-medium">Amount</th>
-                <th className="text-left pb-2 font-medium">Date</th>
                 <th className="text-left pb-2 font-medium">Method</th>
                 <th className="pb-2" />
               </tr>
@@ -444,15 +478,11 @@ function FinanceDashboard() {
                   <td className="py-2.5 pl-1 font-medium">{r.tenant}</td>
                   <td className="py-2.5 text-muted-foreground">{r.property}</td>
                   <td className="py-2.5 text-right font-semibold tabular-nums text-success">{fmt(r.amount)}</td>
-                  <td className="py-2.5 text-muted-foreground">{r.date}</td>
                   <td className="py-2.5">
                     <Pill tone="muted">{r.method}</Pill>
                   </td>
                   <td className="py-2.5 pr-1">
-                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition justify-end">
-                      <ActionBtn><Eye className="size-3.5" /></ActionBtn>
-                      <ActionBtn><FileText className="size-3.5" /></ActionBtn>
-                    </div>
+                    <PaymentHistoryRowMenu />
                   </td>
                 </tr>
               ))}
