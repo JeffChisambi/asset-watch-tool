@@ -1,7 +1,8 @@
 import { Link, useLocation } from "@tanstack/react-router";
+import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard, Wrench, AlertTriangle, ClipboardCheck, Users, Building2,
-  BarChart3, Bell, Search, Sun, ChevronDown,
+  BarChart3, Bell, Search, Sun, ChevronDown, ShieldAlert,
 } from "lucide-react";
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
