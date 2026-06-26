@@ -150,84 +150,87 @@ function Dashboard() {
         <Stat icon={Clock} label="Overdue Jobs" value="3" sub="2 over SLA threshold" trend={{ up: false, value: "1.0%" }} tone="warning" />
       </div>
 
-      {/* Row: Trend + Most Day Active */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-        <SectionCard title="Maintenance Trend" className="lg:col-span-2"
-          action={<div className="flex items-center gap-2 text-xs text-muted-foreground"><span className="size-2 rounded-full bg-primary" />Tickets created<span className="ml-3">Avg resolution <span className="text-foreground font-semibold ml-1">2.4d</span></span></div>}>
-          <div className="flex items-end gap-6 mb-2">
-            <div>
-              <p className="text-3xl font-bold tracking-tight">446</p>
-              <p className="text-xs text-success font-medium mt-0.5 inline-flex items-center gap-1"><ArrowUpRight className="size-3" />24.4% vs last period</p>
+      {/* Two-column layout: left = Trend + Urgent, right = Repeat Rate + Most Active Day */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Left column */}
+        <div className="lg:col-span-2 flex flex-col gap-6">
+          <SectionCard title="Maintenance Trend"
+            action={<div className="flex items-center gap-2 text-xs text-muted-foreground"><span className="size-2 rounded-full bg-primary" />Tickets created<span className="ml-3">Avg resolution <span className="text-foreground font-semibold ml-1">2.4d</span></span></div>}>
+            <div className="flex items-end gap-6 mb-2">
+              <div>
+                <p className="text-3xl font-bold tracking-tight">446</p>
+                <p className="text-xs text-success font-medium mt-0.5 inline-flex items-center gap-1"><ArrowUpRight className="size-3" />24.4% vs last period</p>
+              </div>
+              <div className="ml-auto flex gap-6 text-xs text-muted-foreground">
+                <span>1 Jan</span><span>8 Jan</span><span>15 Jan</span><span>22 Jan</span><span>29 Jan</span>
+              </div>
             </div>
-            <div className="ml-auto flex gap-6 text-xs text-muted-foreground">
-              <span>1 Jan</span><span>8 Jan</span><span>15 Jan</span><span>22 Jan</span><span>29 Jan</span>
+            <TrendChart />
+            <div className="mt-5 grid grid-cols-3 gap-3 border-t border-border pt-4">
+              <div className="rounded-xl border border-border p-3">
+                <p className="text-xs text-muted-foreground">Plumbing</p>
+                <p className="text-lg font-bold mt-1">2,884</p>
+                <div className="h-1 rounded-full bg-info mt-2" />
+              </div>
+              <div className="rounded-xl border border-border p-3">
+                <p className="text-xs text-muted-foreground">Electrical</p>
+                <p className="text-lg font-bold mt-1">1,432</p>
+                <div className="h-1 rounded-full bg-success mt-2" />
+              </div>
+              <div className="rounded-xl border border-border p-3">
+                <p className="text-xs text-muted-foreground">HVAC / Other</p>
+                <p className="text-lg font-bold mt-1">562</p>
+                <div className="h-1 rounded-full bg-warning mt-2" />
+              </div>
             </div>
-          </div>
-          <TrendChart />
-          <div className="mt-5 grid grid-cols-3 gap-3 border-t border-border pt-4">
-            <div className="rounded-xl border border-border p-3">
-              <p className="text-xs text-muted-foreground">Plumbing</p>
-              <p className="text-lg font-bold mt-1">2,884</p>
-              <div className="h-1 rounded-full bg-info mt-2" />
-            </div>
-            <div className="rounded-xl border border-border p-3">
-              <p className="text-xs text-muted-foreground">Electrical</p>
-              <p className="text-lg font-bold mt-1">1,432</p>
-              <div className="h-1 rounded-full bg-success mt-2" />
-            </div>
-            <div className="rounded-xl border border-border p-3">
-              <p className="text-xs text-muted-foreground">HVAC / Other</p>
-              <p className="text-lg font-bold mt-1">562</p>
-              <div className="h-1 rounded-full bg-warning mt-2" />
-            </div>
-          </div>
-        </SectionCard>
+          </SectionCard>
 
-        <SectionCard title="Repeat Maintenance Rate">
-          <Gauge value={68} />
-          <button className="mx-auto mt-3 block text-xs font-medium rounded-full border border-border px-3 py-1.5 hover:bg-muted">Show details</button>
-        </SectionCard>
-      </div>
-
-      {/* Row: Urgent + Most Active Day */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-        <SectionCard title="Urgent Issues Monitor" className="lg:col-span-2"
-          action={<a className="text-xs text-primary font-medium inline-flex items-center gap-1">View all<ChevronRight className="size-3" /></a>}>
-          <table className="w-full text-sm">
-            <thead className="text-[11px] uppercase tracking-wider text-muted-foreground">
-              <tr className="border-b border-border">
-                <th className="text-left font-medium pb-2">Property</th>
-                <th className="text-left font-medium pb-2">Issue</th>
-                <th className="text-left font-medium pb-2">Manager</th>
-                <th className="text-right font-medium pb-2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {urgent.map((u, i) => (
-                <tr key={i} className="border-b border-border last:border-0">
-                  <td className="py-3">
-                    <div className="flex items-center gap-2">
-                      <span className="size-7 rounded-lg bg-muted grid place-items-center"><Home className="size-3.5 text-muted-foreground" /></span>
-                      <span className="font-medium">{u.p}</span>
-                    </div>
-                  </td>
-                  <td className="py-3 max-w-[200px] truncate text-muted-foreground">{u.issue}</td>
-                  <td className="py-3">{u.mgr}</td>
-                  <td className="py-3 text-right">
-                    <button className="text-xs px-2 py-1 rounded-md bg-destructive/10 text-destructive font-medium">Escalate</button>
-                  </td>
+          <SectionCard title="Urgent Issues Monitor"
+            action={<a className="text-xs text-primary font-medium inline-flex items-center gap-1">View all<ChevronRight className="size-3" /></a>}>
+            <table className="w-full text-sm">
+              <thead className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                <tr className="border-b border-border">
+                  <th className="text-left font-medium pb-2">Property</th>
+                  <th className="text-left font-medium pb-2">Issue</th>
+                  <th className="text-left font-medium pb-2">Manager</th>
+                  <th className="text-right font-medium pb-2">Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </SectionCard>
+              </thead>
+              <tbody>
+                {urgent.map((u, i) => (
+                  <tr key={i} className="border-b border-border last:border-0">
+                    <td className="py-3">
+                      <div className="flex items-center gap-2">
+                        <span className="size-7 rounded-lg bg-muted grid place-items-center"><Home className="size-3.5 text-muted-foreground" /></span>
+                        <span className="font-medium">{u.p}</span>
+                      </div>
+                    </td>
+                    <td className="py-3 max-w-[200px] truncate text-muted-foreground">{u.issue}</td>
+                    <td className="py-3">{u.mgr}</td>
+                    <td className="py-3 text-right">
+                      <button className="text-xs px-2 py-1 rounded-md bg-destructive/10 text-destructive font-medium">Escalate</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </SectionCard>
+        </div>
 
-        <SectionCard title="Most Active Day">
-          <div className="flex items-baseline gap-2 mb-2">
-            <span className="text-xs text-muted-foreground">Peak load</span>
-          </div>
-          <WeekdayChart />
-        </SectionCard>
+        {/* Right column */}
+        <div className="flex flex-col gap-6">
+          <SectionCard title="Repeat Maintenance Rate">
+            <Gauge value={68} />
+            <button className="mx-auto mt-3 block text-xs font-medium rounded-full border border-border px-3 py-1.5 hover:bg-muted">Show details</button>
+          </SectionCard>
+
+          <SectionCard title="Most Active Day">
+            <div className="flex items-baseline gap-2 mb-2">
+              <span className="text-xs text-muted-foreground">Peak load</span>
+            </div>
+            <WeekdayChart />
+          </SectionCard>
+        </div>
       </div>
 
     </DashboardShell>
