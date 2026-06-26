@@ -23,7 +23,9 @@ function Sidebar() {
   const location = useLocation();
   const path = location.pathname;
 
-  const nav = [
+  type NavItem = { icon: LucideIcon; label: string; to?: string; badge?: string };
+
+  const nav: NavItem[] = [
     { icon: LayoutDashboard, label: "Dashboard", to: "/" },
     { icon: Wrench, label: "Tickets", badge: "36" },
     { icon: AlertTriangle, label: "Urgent", badge: "5" },
@@ -32,7 +34,7 @@ function Sidebar() {
     { icon: Users, label: "Technicians" },
     { icon: Building2, label: "Properties" },
   ];
-  const ops = [
+  const ops: NavItem[] = [
     { icon: BarChart3, label: "Analytics", to: "/analytics" },
     { icon: ShieldAlert, label: "Escalations" },
     { icon: ClipboardCheck, label: "Reports" },
