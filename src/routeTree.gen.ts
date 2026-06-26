@@ -15,6 +15,17 @@ import { Route as TechniciansRouteImport } from './routes/technicians'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ManagersRouteImport } from './routes/managers'
+import { Route as FinanceTenantsRouteImport } from './routes/finance-tenants'
+import { Route as FinanceSettingsRouteImport } from './routes/finance-settings'
+import { Route as FinanceReportsRouteImport } from './routes/finance-reports'
+import { Route as FinanceRemindersRouteImport } from './routes/finance-reminders'
+import { Route as FinanceReceiptsRouteImport } from './routes/finance-receipts'
+import { Route as FinancePaymentsRouteImport } from './routes/finance-payments'
+import { Route as FinanceOverdueRouteImport } from './routes/finance-overdue'
+import { Route as FinanceOutstandingRouteImport } from './routes/finance-outstanding'
+import { Route as FinanceNotificationsRouteImport } from './routes/finance-notifications'
+import { Route as FinanceLeaseRenewalsRouteImport } from './routes/finance-lease-renewals'
+import { Route as FinanceInvoicesRouteImport } from './routes/finance-invoices'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as EscalationsRouteImport } from './routes/escalations'
 import { Route as CompletionsRouteImport } from './routes/completions'
@@ -50,6 +61,61 @@ const PropertiesRoute = PropertiesRouteImport.update({
 const ManagersRoute = ManagersRouteImport.update({
   id: '/managers',
   path: '/managers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceTenantsRoute = FinanceTenantsRouteImport.update({
+  id: '/finance-tenants',
+  path: '/finance-tenants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceSettingsRoute = FinanceSettingsRouteImport.update({
+  id: '/finance-settings',
+  path: '/finance-settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceReportsRoute = FinanceReportsRouteImport.update({
+  id: '/finance-reports',
+  path: '/finance-reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceRemindersRoute = FinanceRemindersRouteImport.update({
+  id: '/finance-reminders',
+  path: '/finance-reminders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceReceiptsRoute = FinanceReceiptsRouteImport.update({
+  id: '/finance-receipts',
+  path: '/finance-receipts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancePaymentsRoute = FinancePaymentsRouteImport.update({
+  id: '/finance-payments',
+  path: '/finance-payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceOverdueRoute = FinanceOverdueRouteImport.update({
+  id: '/finance-overdue',
+  path: '/finance-overdue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceOutstandingRoute = FinanceOutstandingRouteImport.update({
+  id: '/finance-outstanding',
+  path: '/finance-outstanding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceNotificationsRoute = FinanceNotificationsRouteImport.update({
+  id: '/finance-notifications',
+  path: '/finance-notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceLeaseRenewalsRoute = FinanceLeaseRenewalsRouteImport.update({
+  id: '/finance-lease-renewals',
+  path: '/finance-lease-renewals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceInvoicesRoute = FinanceInvoicesRouteImport.update({
+  id: '/finance-invoices',
+  path: '/finance-invoices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceRoute = FinanceRouteImport.update({
@@ -90,6 +156,17 @@ export interface FileRoutesByFullPath {
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
   '/finance': typeof FinanceRoute
+  '/finance-invoices': typeof FinanceInvoicesRoute
+  '/finance-lease-renewals': typeof FinanceLeaseRenewalsRoute
+  '/finance-notifications': typeof FinanceNotificationsRoute
+  '/finance-outstanding': typeof FinanceOutstandingRoute
+  '/finance-overdue': typeof FinanceOverdueRoute
+  '/finance-payments': typeof FinancePaymentsRoute
+  '/finance-receipts': typeof FinanceReceiptsRoute
+  '/finance-reminders': typeof FinanceRemindersRoute
+  '/finance-reports': typeof FinanceReportsRoute
+  '/finance-settings': typeof FinanceSettingsRoute
+  '/finance-tenants': typeof FinanceTenantsRoute
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
@@ -104,6 +181,17 @@ export interface FileRoutesByTo {
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
   '/finance': typeof FinanceRoute
+  '/finance-invoices': typeof FinanceInvoicesRoute
+  '/finance-lease-renewals': typeof FinanceLeaseRenewalsRoute
+  '/finance-notifications': typeof FinanceNotificationsRoute
+  '/finance-outstanding': typeof FinanceOutstandingRoute
+  '/finance-overdue': typeof FinanceOverdueRoute
+  '/finance-payments': typeof FinancePaymentsRoute
+  '/finance-receipts': typeof FinanceReceiptsRoute
+  '/finance-reminders': typeof FinanceRemindersRoute
+  '/finance-reports': typeof FinanceReportsRoute
+  '/finance-settings': typeof FinanceSettingsRoute
+  '/finance-tenants': typeof FinanceTenantsRoute
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
@@ -119,6 +207,17 @@ export interface FileRoutesById {
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
   '/finance': typeof FinanceRoute
+  '/finance-invoices': typeof FinanceInvoicesRoute
+  '/finance-lease-renewals': typeof FinanceLeaseRenewalsRoute
+  '/finance-notifications': typeof FinanceNotificationsRoute
+  '/finance-outstanding': typeof FinanceOutstandingRoute
+  '/finance-overdue': typeof FinanceOverdueRoute
+  '/finance-payments': typeof FinancePaymentsRoute
+  '/finance-receipts': typeof FinanceReceiptsRoute
+  '/finance-reminders': typeof FinanceRemindersRoute
+  '/finance-reports': typeof FinanceReportsRoute
+  '/finance-settings': typeof FinanceSettingsRoute
+  '/finance-tenants': typeof FinanceTenantsRoute
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
@@ -135,6 +234,17 @@ export interface FileRouteTypes {
     | '/completions'
     | '/escalations'
     | '/finance'
+    | '/finance-invoices'
+    | '/finance-lease-renewals'
+    | '/finance-notifications'
+    | '/finance-outstanding'
+    | '/finance-overdue'
+    | '/finance-payments'
+    | '/finance-receipts'
+    | '/finance-reminders'
+    | '/finance-reports'
+    | '/finance-settings'
+    | '/finance-tenants'
     | '/managers'
     | '/properties'
     | '/reports'
@@ -149,6 +259,17 @@ export interface FileRouteTypes {
     | '/completions'
     | '/escalations'
     | '/finance'
+    | '/finance-invoices'
+    | '/finance-lease-renewals'
+    | '/finance-notifications'
+    | '/finance-outstanding'
+    | '/finance-overdue'
+    | '/finance-payments'
+    | '/finance-receipts'
+    | '/finance-reminders'
+    | '/finance-reports'
+    | '/finance-settings'
+    | '/finance-tenants'
     | '/managers'
     | '/properties'
     | '/reports'
@@ -163,6 +284,17 @@ export interface FileRouteTypes {
     | '/completions'
     | '/escalations'
     | '/finance'
+    | '/finance-invoices'
+    | '/finance-lease-renewals'
+    | '/finance-notifications'
+    | '/finance-outstanding'
+    | '/finance-overdue'
+    | '/finance-payments'
+    | '/finance-receipts'
+    | '/finance-reminders'
+    | '/finance-reports'
+    | '/finance-settings'
+    | '/finance-tenants'
     | '/managers'
     | '/properties'
     | '/reports'
@@ -178,6 +310,17 @@ export interface RootRouteChildren {
   CompletionsRoute: typeof CompletionsRoute
   EscalationsRoute: typeof EscalationsRoute
   FinanceRoute: typeof FinanceRoute
+  FinanceInvoicesRoute: typeof FinanceInvoicesRoute
+  FinanceLeaseRenewalsRoute: typeof FinanceLeaseRenewalsRoute
+  FinanceNotificationsRoute: typeof FinanceNotificationsRoute
+  FinanceOutstandingRoute: typeof FinanceOutstandingRoute
+  FinanceOverdueRoute: typeof FinanceOverdueRoute
+  FinancePaymentsRoute: typeof FinancePaymentsRoute
+  FinanceReceiptsRoute: typeof FinanceReceiptsRoute
+  FinanceRemindersRoute: typeof FinanceRemindersRoute
+  FinanceReportsRoute: typeof FinanceReportsRoute
+  FinanceSettingsRoute: typeof FinanceSettingsRoute
+  FinanceTenantsRoute: typeof FinanceTenantsRoute
   ManagersRoute: typeof ManagersRoute
   PropertiesRoute: typeof PropertiesRoute
   ReportsRoute: typeof ReportsRoute
@@ -228,6 +371,83 @@ declare module '@tanstack/react-router' {
       path: '/managers'
       fullPath: '/managers'
       preLoaderRoute: typeof ManagersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-tenants': {
+      id: '/finance-tenants'
+      path: '/finance-tenants'
+      fullPath: '/finance-tenants'
+      preLoaderRoute: typeof FinanceTenantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-settings': {
+      id: '/finance-settings'
+      path: '/finance-settings'
+      fullPath: '/finance-settings'
+      preLoaderRoute: typeof FinanceSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-reports': {
+      id: '/finance-reports'
+      path: '/finance-reports'
+      fullPath: '/finance-reports'
+      preLoaderRoute: typeof FinanceReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-reminders': {
+      id: '/finance-reminders'
+      path: '/finance-reminders'
+      fullPath: '/finance-reminders'
+      preLoaderRoute: typeof FinanceRemindersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-receipts': {
+      id: '/finance-receipts'
+      path: '/finance-receipts'
+      fullPath: '/finance-receipts'
+      preLoaderRoute: typeof FinanceReceiptsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-payments': {
+      id: '/finance-payments'
+      path: '/finance-payments'
+      fullPath: '/finance-payments'
+      preLoaderRoute: typeof FinancePaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-overdue': {
+      id: '/finance-overdue'
+      path: '/finance-overdue'
+      fullPath: '/finance-overdue'
+      preLoaderRoute: typeof FinanceOverdueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-outstanding': {
+      id: '/finance-outstanding'
+      path: '/finance-outstanding'
+      fullPath: '/finance-outstanding'
+      preLoaderRoute: typeof FinanceOutstandingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-notifications': {
+      id: '/finance-notifications'
+      path: '/finance-notifications'
+      fullPath: '/finance-notifications'
+      preLoaderRoute: typeof FinanceNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-lease-renewals': {
+      id: '/finance-lease-renewals'
+      path: '/finance-lease-renewals'
+      fullPath: '/finance-lease-renewals'
+      preLoaderRoute: typeof FinanceLeaseRenewalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance-invoices': {
+      id: '/finance-invoices'
+      path: '/finance-invoices'
+      fullPath: '/finance-invoices'
+      preLoaderRoute: typeof FinanceInvoicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance': {
@@ -282,6 +502,17 @@ const rootRouteChildren: RootRouteChildren = {
   CompletionsRoute: CompletionsRoute,
   EscalationsRoute: EscalationsRoute,
   FinanceRoute: FinanceRoute,
+  FinanceInvoicesRoute: FinanceInvoicesRoute,
+  FinanceLeaseRenewalsRoute: FinanceLeaseRenewalsRoute,
+  FinanceNotificationsRoute: FinanceNotificationsRoute,
+  FinanceOutstandingRoute: FinanceOutstandingRoute,
+  FinanceOverdueRoute: FinanceOverdueRoute,
+  FinancePaymentsRoute: FinancePaymentsRoute,
+  FinanceReceiptsRoute: FinanceReceiptsRoute,
+  FinanceRemindersRoute: FinanceRemindersRoute,
+  FinanceReportsRoute: FinanceReportsRoute,
+  FinanceSettingsRoute: FinanceSettingsRoute,
+  FinanceTenantsRoute: FinanceTenantsRoute,
   ManagersRoute: ManagersRoute,
   PropertiesRoute: PropertiesRoute,
   ReportsRoute: ReportsRoute,

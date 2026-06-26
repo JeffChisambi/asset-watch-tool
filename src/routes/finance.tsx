@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowUpRight, ArrowDownRight, Banknote, CreditCard, AlertCircle,
   Clock, Users, CalendarDays, Send, FileText, Download, Plus,
-  Eye, PhoneCall, StickyNote, MoreHorizontal, CheckCircle2,
+  Eye, PhoneCall, StickyNote,
   MessageSquare, Mail, Smartphone, ChevronRight, Calendar,
 } from "lucide-react";
-import { DashboardShell, SectionCard, Pill } from "../components/DashboardShell";
+import { FinanceDashboardShell, FinanceSectionCard as SectionCard, FinancePill as Pill } from "../components/FinanceDashboardShell";
 
 export const Route = createFileRoute("/finance")({
   head: () => ({
@@ -161,7 +161,7 @@ function CollectionBar() {
 /* ─── main component ─────────────────────────────────── */
 function FinanceDashboard() {
   return (
-    <DashboardShell>
+    <FinanceDashboardShell>
       {/* page header */}
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
@@ -511,6 +511,6 @@ function FinanceDashboard() {
           <ActionBtn key={a.label} variant={a.tone}>{a.label}</ActionBtn>
         ))}
       </div>
-    </DashboardShell>
+    </FinanceDashboardShell>
   );
 }
