@@ -2,7 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard, Wrench, AlertTriangle, ClipboardCheck, Users, Building2,
-  BarChart3, Bell, Search, Sun, ChevronDown, ShieldAlert,
+  BarChart3, Bell, Search, Sun, ChevronDown, ShieldAlert, HeartPulse,
 } from "lucide-react";
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
@@ -33,6 +33,7 @@ function Sidebar() {
     { icon: Users, label: "Managers" },
     { icon: Users, label: "Technicians" },
     { icon: Building2, label: "Properties" },
+    { icon: HeartPulse, label: "Property Health" },
   ];
   const ops: NavItem[] = [
     { icon: BarChart3, label: "Analytics", to: "/analytics" },
