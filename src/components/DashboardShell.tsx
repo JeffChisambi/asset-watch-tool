@@ -36,7 +36,6 @@ function Sidebar() {
     { icon: Building2, label: "Properties", to: "/properties" },
   ];
   const ops: NavItem[] = [
-    { icon: BarChart3, label: "Analytics", to: "/analytics" },
     { icon: ShieldAlert, label: "Escalations", to: "/escalations" },
     { icon: ClipboardCheck, label: "Reports", to: "/reports" },
     { icon: Bell, label: "Announcements", to: "/announcements" },

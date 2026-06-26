@@ -29,7 +29,6 @@ import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as EscalationsRouteImport } from './routes/escalations'
 import { Route as CompletionsRouteImport } from './routes/completions'
 import { Route as AnnouncementsRouteImport } from './routes/announcements'
-import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as IndexRouteImport } from './routes/index'
 
 const UrgentRoute = UrgentRouteImport.update({
@@ -132,11 +131,6 @@ const AnnouncementsRoute = AnnouncementsRouteImport.update({
   path: '/announcements',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AnalyticsRoute = AnalyticsRouteImport.update({
-  id: '/analytics',
-  path: '/analytics',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -145,7 +139,6 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/analytics': typeof AnalyticsRoute
   '/announcements': typeof AnnouncementsRoute
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
@@ -169,7 +162,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/analytics': typeof AnalyticsRoute
   '/announcements': typeof AnnouncementsRoute
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
@@ -194,7 +186,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/analytics': typeof AnalyticsRoute
   '/announcements': typeof AnnouncementsRoute
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
@@ -220,7 +211,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/analytics'
     | '/announcements'
     | '/completions'
     | '/escalations'
@@ -244,7 +234,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/analytics'
     | '/announcements'
     | '/completions'
     | '/escalations'
@@ -268,7 +257,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/analytics'
     | '/announcements'
     | '/completions'
     | '/escalations'
@@ -293,7 +281,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AnalyticsRoute: typeof AnalyticsRoute
   AnnouncementsRoute: typeof AnnouncementsRoute
   CompletionsRoute: typeof CompletionsRoute
   EscalationsRoute: typeof EscalationsRoute
@@ -458,13 +445,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnnouncementsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/analytics': {
-      id: '/analytics'
-      path: '/analytics'
-      fullPath: '/analytics'
-      preLoaderRoute: typeof AnalyticsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -477,7 +457,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AnalyticsRoute: AnalyticsRoute,
   AnnouncementsRoute: AnnouncementsRoute,
   CompletionsRoute: CompletionsRoute,
   EscalationsRoute: EscalationsRoute,
