@@ -183,16 +183,14 @@ function Dashboard() {
           </div>
         </SectionCard>
 
-        <SectionCard title="Most Active Day">
-          <div className="flex items-baseline gap-2 mb-2">
-            <span className="text-xs text-muted-foreground">Peak load</span>
-          </div>
-          <WeekdayChart />
+        <SectionCard title="Repeat Maintenance Rate">
+          <Gauge value={68} />
+          <button className="mx-auto mt-3 block text-xs font-medium rounded-full border border-border px-3 py-1.5 hover:bg-muted">Show details</button>
         </SectionCard>
       </div>
 
-      {/* Row: Urgent + Repeat rate */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* Row: Urgent + Most Active Day */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
         <SectionCard title="Urgent Issues Monitor" className="lg:col-span-2"
           action={<a className="text-xs text-primary font-medium inline-flex items-center gap-1">View all<ChevronRight className="size-3" /></a>}>
           <table className="w-full text-sm">
@@ -224,9 +222,11 @@ function Dashboard() {
           </table>
         </SectionCard>
 
-        <SectionCard title="Repeat Maintenance Rate">
-          <Gauge value={68} />
-          <button className="mx-auto mt-3 block text-xs font-medium rounded-full border border-border px-3 py-1.5 hover:bg-muted">Show details</button>
+        <SectionCard title="Most Active Day">
+          <div className="flex items-baseline gap-2 mb-2">
+            <span className="text-xs text-muted-foreground">Peak load</span>
+          </div>
+          <WeekdayChart />
         </SectionCard>
       </div>
 
