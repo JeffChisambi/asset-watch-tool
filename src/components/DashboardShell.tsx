@@ -49,7 +49,7 @@ function Sidebar() {
         <div className="size-8 rounded-lg bg-primary grid place-items-center text-primary-foreground">
           <Wrench className="size-4" />
         </div>
-        <span className="font-bold tracking-tight">FixOps</span>
+        <span className="font-bold tracking-tight">SGWops</span>
       </div>
       <nav className="px-3 flex-1 min-h-0 overflow-hidden">
         <ul className="space-y-0.5">
