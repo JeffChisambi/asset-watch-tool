@@ -95,7 +95,7 @@ function Sidebar() {
         </div>
         <span className="font-bold tracking-tight">FixOps</span>
       </div>
-      <nav className="px-3 flex-1 overflow-y-auto">
+      <nav className="px-3 flex-1 min-h-0 overflow-y-auto">
         <ul className="space-y-0.5">
           {nav.map((i) => (
             <li key={i.label}>
