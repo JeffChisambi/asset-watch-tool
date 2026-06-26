@@ -93,7 +93,6 @@ function Tickets() {
               <th className="text-left font-medium pb-2">ID</th>
               <th className="text-left font-medium pb-2">Property</th>
               <th className="text-left font-medium pb-2">Issue</th>
-              <th className="text-left font-medium pb-2">Category</th>
               <th className="text-left font-medium pb-2">Manager</th>
               <th className="text-left font-medium pb-2">Age</th>
               <th className="text-right font-medium pb-2">Status</th>
@@ -110,7 +109,6 @@ function Tickets() {
                   </div>
                 </td>
                 <td className="py-3 max-w-[200px] truncate text-muted-foreground">{t.issue}</td>
-                <td className="py-3"><Pill tone="muted">{t.cat}</Pill></td>
                 <td className="py-3">{t.mgr}</td>
                 <td className="py-3 text-muted-foreground">{t.age}</td>
                 <td className="py-3 text-right">
