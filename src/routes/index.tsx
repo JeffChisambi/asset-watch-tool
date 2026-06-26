@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   LayoutDashboard, Wrench, AlertTriangle, ClipboardCheck, Users, Building2,
-  BarChart3, Bell, Settings, LifeBuoy, Search, Calendar, Plus, Download,
+  BarChart3, Bell, Search, Calendar, Plus, Download,
   Sun, ChevronDown, MoreHorizontal, ArrowUpRight, ArrowDownRight, Clock,
   CheckCircle2, Flame, Home, ShieldAlert, FileText, ChevronRight, Phone,
   Eye, Star,
@@ -121,10 +121,6 @@ function Sidebar() {
           ))}
         </ul>
       </nav>
-      <div className="p-3 border-t border-sidebar-border space-y-0.5">
-        <a className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/60"><Settings className="size-4" />Settings</a>
-        <a className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/60"><LifeBuoy className="size-4" />Help & Support</a>
-      </div>
     </aside>
   );
 }
