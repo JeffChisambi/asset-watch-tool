@@ -227,11 +227,11 @@ function Dashboard() {
     { n: "Susan Lwanga", jobs: 41, avg: "1.6d", over: 2, sat: 4.7, color: "from-[oklch(0.78_0.14_75)] to-[oklch(0.6_0.18_55)]" },
   ];
   const completions = [
-    { id: "MT-00124", prop: "House A12", issue: "Hybrid HVAC service", mgr: "John B.", time: "1h 42m", price: "$124.80", status: "approved" },
-    { id: "MT-00118", prop: "Flat C4", issue: "Geyser replacement", mgr: "Peter M.", time: "3h 10m", price: "$92.50", status: "review" },
-    { id: "MT-00109", prop: "House D9", issue: "Drain unblocking", mgr: "Grace M.", time: "55m", price: "$48.00", status: "approved" },
-    { id: "MT-00102", prop: "Block E2", issue: "Door lock change", mgr: "Linda P.", time: "1h 05m", price: "$62.20", status: "approved" },
-    { id: "MT-00098", prop: "House B24", issue: "Wiring inspection", mgr: "John B.", time: "2h 20m", price: "$74.00", status: "review" },
+    { id: "MT-00124", prop: "House A12", issue: "Hybrid HVAC service", mgr: "John B.", time: "1h 42m", price: "MK 218,400", status: "approved" },
+    { id: "MT-00118", prop: "Flat C4", issue: "Geyser replacement", mgr: "Peter M.", time: "3h 10m", price: "MK 161,875", status: "review" },
+    { id: "MT-00109", prop: "House D9", issue: "Drain unblocking", mgr: "Grace M.", time: "55m", price: "MK 84,000", status: "approved" },
+    { id: "MT-00102", prop: "Block E2", issue: "Door lock change", mgr: "Linda P.", time: "1h 05m", price: "MK 108,850", status: "approved" },
+    { id: "MT-00098", prop: "House B24", issue: "Wiring inspection", mgr: "John B.", time: "2h 20m", price: "MK 129,500", status: "review" },
   ];
 
   return (
