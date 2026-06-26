@@ -121,10 +121,6 @@ function Sidebar() {
           ))}
         </ul>
       </nav>
-      <div className="p-3 border-t border-sidebar-border space-y-0.5">
-        <a className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/60"><Settings className="size-4" />Settings</a>
-        <a className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground hover:bg-sidebar-accent/60"><LifeBuoy className="size-4" />Help & Support</a>
-      </div>
     </aside>
   );
 }
