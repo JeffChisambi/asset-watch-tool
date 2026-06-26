@@ -446,50 +446,6 @@ function FinanceDashboard() {
           </div>
         </SectionCard>
 
-      {/* ── payment history ── */}
-      <SectionCard
-        title="Payment History"
-        action={
-          <div className="flex items-center gap-2">
-            <select className="text-xs border border-border rounded-lg px-2 py-1.5 bg-card text-muted-foreground focus:outline-none focus:border-primary/40">
-              <option>All Methods</option>
-              <option>Bank Transfer</option>
-              <option>Mobile Money</option>
-              <option>Cash</option>
-            </select>
-            <ActionBtn variant="outline"><Download className="size-3.5 mr-1 inline" />Export</ActionBtn>
-          </div>
-        }
-      >
-        <div className="overflow-x-auto -mx-1">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-[11px] uppercase tracking-wide text-muted-foreground border-b border-border">
-                <th className="text-left pb-2 pl-1 font-medium">Tenant</th>
-                <th className="text-left pb-2 font-medium">Property</th>
-                <th className="text-right pb-2 font-medium">Amount</th>
-                <th className="text-left pb-2 font-medium">Method</th>
-                <th className="pb-2" />
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border">
-              {paymentHistory.map((r, i) => (
-                <tr key={i} className="hover:bg-muted/40 transition group">
-                  <td className="py-2.5 pl-1 font-medium">{r.tenant}</td>
-                  <td className="py-2.5 text-muted-foreground">{r.property}</td>
-                  <td className="py-2.5 text-right font-semibold tabular-nums text-success">{fmt(r.amount)}</td>
-                  <td className="py-2.5">
-                    <Pill tone="muted">{r.method}</Pill>
-                  </td>
-                  <td className="py-2.5 pr-1">
-                    <PaymentHistoryRowMenu />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </SectionCard>
 
       {/* ── quick actions ── */}
       <div className="rounded-2xl border border-border bg-card p-5 flex items-center gap-3 flex-wrap shadow-[0_1px_2px_rgba(16,24,40,0.04)]">
