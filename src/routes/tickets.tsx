@@ -112,7 +112,7 @@ function Tickets() {
                 <td className="py-3">{t.mgr}</td>
                 <td className="py-3 text-muted-foreground">{t.age}</td>
                 <td className="py-3 text-right">
-                  <Pill tone={statusTone[t.status]}>{statusLabel[t.status]}</Pill>
+                  <Pill tone="muted">{statusLabel[t.status]}</Pill>
                 </td>
               </tr>
             ))}
