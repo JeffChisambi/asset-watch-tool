@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Wrench, Flame, Home, Clock, CheckCircle2,
@@ -149,8 +150,21 @@ function WeekdayChart() {
 }
 
 function Gauge({ value = 68 }) {
-  const r = 70, c = Math.PI * r;
+  const [displayed, setDisplayed] = useState(0);
   const seg = 40;
+
+  useEffect(() => {
+    const duration = 1200;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      setDisplayed(Math.round(eased * value));
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [value]);
+
   return (
     <div className="relative w-full grid place-items-center py-2">
       <svg viewBox="0 0 200 120" className="w-56">
@@ -160,10 +174,10 @@ function Gauge({ value = 68 }) {
           const y1 = 100 - Math.sin(Math.PI - a) * 80;
           const x2 = 100 + Math.cos(Math.PI - a) * 95;
           const y2 = 100 - Math.sin(Math.PI - a) * 95;
-          const active = i / seg <= value / 100;
+          const active = i / seg <= displayed / 100;
           return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={active ? "oklch(0.68 0.16 155)" : "oklch(0.92 0.008 250)"} strokeWidth="3" strokeLinecap="round" />;
         })}
-        <text x="100" y="92" textAnchor="middle" className="fill-foreground" style={{ fontSize: 26, fontWeight: 700 }}>{value}%</text>
+        <text x="100" y="92" textAnchor="middle" className="fill-foreground" style={{ fontSize: 26, fontWeight: 700 }}>{displayed}%</text>
       </svg>
       <p className="text-xs text-muted-foreground -mt-2">On track to 75% SLA target</p>
     </div>
