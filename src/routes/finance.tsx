@@ -329,37 +329,7 @@ function FinanceDashboard() {
         </SectionCard>
       </div>
 
-      {/* ── reminder center + recent activity ── */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        {/* payment reminder center */}
-        <SectionCard
-          title="Payment Reminder Center"
-          action={
-            <button className="flex items-center gap-1.5 text-xs bg-primary text-primary-foreground hover:bg-primary/90 px-3 py-1.5 rounded-lg transition font-medium">
-              <Plus className="size-3" /> Send Reminder
-            </button>
-          }
-        >
-          <div className="space-y-2">
-            {reminders.map((r, i) => (
-              <div key={i} className="flex items-center gap-3 rounded-xl border border-border px-3 py-2.5 hover:bg-muted/30 transition">
-                <div className="size-7 rounded-full bg-primary/10 text-primary grid place-items-center shrink-0">
-                  {methodIcon(r.method)}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium leading-tight">{r.tenant}</p>
-                  <p className="text-xs text-muted-foreground">{r.type}</p>
-                </div>
-                <div className="text-right shrink-0">
-                  <p className="text-xs text-muted-foreground">{r.date}</p>
-                  <Pill tone={r.status === "Delivered" ? "success" : "muted"}>{r.status}</Pill>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SectionCard>
-
-        {/* recent financial activity */}
+      {/* ── recent activity ── */}
         <SectionCard title="Recent Financial Activity">
           <div className="space-y-0">
             {recentActivity.map((a, i) => (
@@ -375,7 +345,6 @@ function FinanceDashboard() {
             ))}
           </div>
         </SectionCard>
-      </div>
 
       {/* ── payment history ── */}
       <SectionCard
