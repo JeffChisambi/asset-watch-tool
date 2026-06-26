@@ -183,6 +183,16 @@ function FinanceDashboard() {
       </div>
 
 
+      {/* ── summary cards ── */}
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+        <StatCard icon={AlertCircle}   label="Outstanding Balance"  value="MWK 8.45M"  sub="Across 16 tenants"       tone="danger"   trend={{ up: false, value: "+2.1M" }} />
+        <StatCard icon={Banknote}      label="Collected This Month" value="MWK 23.7M"  sub="vs MWK 21.2M last month" tone="success"  trend={{ up: true,  value: "+11.8%" }} />
+        <StatCard icon={Users}         label="Overdue Tenants"      value="16"         sub="Require follow-up"       tone="danger"   />
+        <StatCard icon={Clock}         label="Due This Week"        value="9"          sub="Next 7 days"             tone="warning"  />
+        <StatCard icon={Send}          label="Reminders Sent"       value="28"         sub="Today across all channels" tone="info"  />
+        <StatCard icon={CalendarDays}  label="Lease Renewals"       value="5"          sub="Expiring within 30 days" tone="primary"  />
+      </div>
+
       {/* ── outstanding + upcoming ── */}
       <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
         {/* outstanding balances */}
