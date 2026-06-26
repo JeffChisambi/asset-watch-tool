@@ -4,7 +4,7 @@ import {
   ArrowUpRight, ArrowDownRight, Building2,
   ChevronRight, Calendar, Plus, Download, ChevronDown,
 } from "lucide-react";
-import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { DashboardShell, SectionCard, Pill } from "../components/DashboardShell";
 
 export const Route = createFileRoute("/")({
@@ -49,37 +49,37 @@ function Stat({ icon: Icon, label, value, sub, trend, tone = "primary" }: any) {
 
 /* ---------- charts (pure SVG) ---------- */
 const trendData = [
-  { label: "1 Jan",  tickets: 4  },
-  { label: "",       tickets: 8  },
-  { label: "",       tickets: 11 },
-  { label: "",       tickets: 3  },
-  { label: "",       tickets: 2  },
-  { label: "",       tickets: 14 },
-  { label: "",       tickets: 18 },
-  { label: "8 Jan",  tickets: 19 },
-  { label: "",       tickets: 16 },
-  { label: "",       tickets: 13 },
-  { label: "",       tickets: 4  },
-  { label: "",       tickets: 3  },
-  { label: "",       tickets: 16 },
-  { label: "",       tickets: 20 },
-  { label: "15 Jan", tickets: 22 },
-  { label: "",       tickets: 18 },
-  { label: "",       tickets: 15 },
-  { label: "",       tickets: 5  },
-  { label: "",       tickets: 3  },
-  { label: "",       tickets: 18 },
-  { label: "",       tickets: 23 },
-  { label: "22 Jan", tickets: 25 },
-  { label: "",       tickets: 20 },
-  { label: "",       tickets: 17 },
-  { label: "",       tickets: 6  },
-  { label: "",       tickets: 4  },
-  { label: "",       tickets: 21 },
-  { label: "",       tickets: 26 },
-  { label: "29 Jan", tickets: 28 },
-  { label: "",       tickets: 24 },
-  { label: "",       tickets: 22 },
+  { label: "1 Jan",  plumbing: 2,  electrical: 1, hvac: 1  },
+  { label: "",       plumbing: 5,  electrical: 2, hvac: 1  },
+  { label: "",       plumbing: 6,  electrical: 3, hvac: 2  },
+  { label: "",       plumbing: 2,  electrical: 1, hvac: 0  },
+  { label: "",       plumbing: 1,  electrical: 1, hvac: 0  },
+  { label: "",       plumbing: 8,  electrical: 4, hvac: 2  },
+  { label: "",       plumbing: 10, electrical: 5, hvac: 3  },
+  { label: "8 Jan",  plumbing: 11, electrical: 6, hvac: 2  },
+  { label: "",       plumbing: 9,  electrical: 5, hvac: 2  },
+  { label: "",       plumbing: 7,  electrical: 4, hvac: 2  },
+  { label: "",       plumbing: 2,  electrical: 1, hvac: 1  },
+  { label: "",       plumbing: 2,  electrical: 1, hvac: 0  },
+  { label: "",       plumbing: 9,  electrical: 5, hvac: 2  },
+  { label: "",       plumbing: 11, electrical: 6, hvac: 3  },
+  { label: "15 Jan", plumbing: 13, electrical: 6, hvac: 3  },
+  { label: "",       plumbing: 10, electrical: 6, hvac: 2  },
+  { label: "",       plumbing: 8,  electrical: 5, hvac: 2  },
+  { label: "",       plumbing: 3,  electrical: 1, hvac: 1  },
+  { label: "",       plumbing: 2,  electrical: 1, hvac: 0  },
+  { label: "",       plumbing: 10, electrical: 5, hvac: 3  },
+  { label: "",       plumbing: 13, electrical: 7, hvac: 3  },
+  { label: "22 Jan", plumbing: 14, electrical: 7, hvac: 4  },
+  { label: "",       plumbing: 11, electrical: 6, hvac: 3  },
+  { label: "",       plumbing: 9,  electrical: 6, hvac: 2  },
+  { label: "",       plumbing: 3,  electrical: 2, hvac: 1  },
+  { label: "",       plumbing: 2,  electrical: 1, hvac: 1  },
+  { label: "",       plumbing: 12, electrical: 6, hvac: 3  },
+  { label: "",       plumbing: 15, electrical: 8, hvac: 3  },
+  { label: "29 Jan", plumbing: 16, electrical: 8, hvac: 4  },
+  { label: "",       plumbing: 13, electrical: 8, hvac: 3  },
+  { label: "",       plumbing: 12, electrical: 7, hvac: 3  },
 ];
 
 function TrendChart() {
@@ -87,9 +87,17 @@ function TrendChart() {
     <ResponsiveContainer width="100%" height={176}>
       <AreaChart data={trendData} margin={{ top: 4, right: 12, left: 12, bottom: 0 }}>
         <defs>
-          <linearGradient id="trendGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="oklch(0.58 0.21 260)" stopOpacity={0.28} />
-            <stop offset="100%" stopColor="oklch(0.58 0.21 260)" stopOpacity={0} />
+          <linearGradient id="gradPlumbing" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.2} />
+            <stop offset="100%" stopColor="#3b82f6" stopOpacity={0} />
+          </linearGradient>
+          <linearGradient id="gradElectrical" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#22c55e" stopOpacity={0.2} />
+            <stop offset="100%" stopColor="#22c55e" stopOpacity={0} />
+          </linearGradient>
+          <linearGradient id="gradHvac" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#f59e0b" stopOpacity={0.2} />
+            <stop offset="100%" stopColor="#f59e0b" stopOpacity={0} />
           </linearGradient>
         </defs>
         <XAxis
@@ -101,20 +109,19 @@ function TrendChart() {
         />
         <Tooltip
           contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid oklch(0.92 0.008 250)", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
-          itemStyle={{ color: "oklch(0.58 0.21 260)" }}
           labelStyle={{ fontWeight: 600 }}
-          formatter={(v: number) => [v, "Tickets"]}
           labelFormatter={(l) => l || ""}
+          formatter={(v: number, name: string) => [v, name === "plumbing" ? "Plumbing" : name === "electrical" ? "Electrical" : "HVAC / Other"]}
         />
-        <Area
-          type="monotone"
-          dataKey="tickets"
-          stroke="oklch(0.58 0.21 260)"
-          strokeWidth={2}
-          fill="url(#trendGrad)"
-          dot={false}
-          activeDot={{ r: 4, fill: "oklch(0.58 0.21 260)", stroke: "white", strokeWidth: 2 }}
+        <Legend
+          iconType="circle"
+          iconSize={7}
+          formatter={(val) => val === "plumbing" ? "Plumbing" : val === "electrical" ? "Electrical" : "HVAC / Other"}
+          wrapperStyle={{ fontSize: 11, paddingTop: 8 }}
         />
+        <Area type="monotone" dataKey="plumbing"    stroke="#3b82f6" strokeWidth={2} fill="url(#gradPlumbing)"    dot={false} activeDot={{ r: 4, stroke: "white", strokeWidth: 2 }} />
+        <Area type="monotone" dataKey="electrical"  stroke="#22c55e" strokeWidth={2} fill="url(#gradElectrical)"  dot={false} activeDot={{ r: 4, stroke: "white", strokeWidth: 2 }} />
+        <Area type="monotone" dataKey="hvac"        stroke="#f59e0b" strokeWidth={2} fill="url(#gradHvac)"        dot={false} activeDot={{ r: 4, stroke: "white", strokeWidth: 2 }} />
       </AreaChart>
     </ResponsiveContainer>
   );
