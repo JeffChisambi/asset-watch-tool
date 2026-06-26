@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState, useEffect, useRef } from "react";
 import {
   ArrowUpRight, ArrowDownRight, Banknote, CreditCard, AlertCircle,
   Clock, Users, CalendarDays, Send, FileText, Download, Plus,
-  Eye, PhoneCall, StickyNote,
+  Eye, PhoneCall, StickyNote, MoreHorizontal,
   MessageSquare, Mail, Smartphone, ChevronRight, Calendar,
 } from "lucide-react";
 import { FinanceDashboardShell, FinanceSectionCard as SectionCard, FinancePill as Pill } from "../components/FinanceDashboardShell";
@@ -62,6 +63,44 @@ function ActionBtn({ children, variant = "ghost" }: { children: React.ReactNode;
     outline: "text-xs border border-border text-foreground hover:bg-muted px-2 py-1 rounded-lg transition",
   };
   return <button className={cls[variant]}>{children}</button>;
+}
+
+function BalanceRowMenu() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function handle(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handle);
+    return () => document.removeEventListener("mousedown", handle);
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative flex justify-end">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="size-7 grid place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition opacity-0 group-hover:opacity-100"
+      >
+        <MoreHorizontal className="size-4" />
+      </button>
+      {open && (
+        <div className="absolute right-0 top-8 z-50 w-44 rounded-xl border border-border bg-card shadow-lg py-1">
+          <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-muted transition text-foreground" onClick={() => setOpen(false)}>
+            <Eye className="size-3.5 text-muted-foreground" /> View details
+          </button>
+          <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-muted transition text-foreground" onClick={() => setOpen(false)}>
+            <CreditCard className="size-3.5 text-muted-foreground" /> Record payment
+          </button>
+          <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-muted transition text-foreground" onClick={() => setOpen(false)}>
+            <Send className="size-3.5 text-muted-foreground" /> Send reminder
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 
@@ -213,11 +252,7 @@ function FinanceDashboard() {
                     <td className="py-2.5 text-muted-foreground">{r.property}</td>
                     <td className="py-2.5 text-right font-semibold tabular-nums">{fmt(r.balance)}</td>
                     <td className="py-2.5 pr-1">
-                      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition justify-end">
-                        <ActionBtn><Eye className="size-3.5" /></ActionBtn>
-                        <ActionBtn><CreditCard className="size-3.5" /></ActionBtn>
-                        <ActionBtn><Send className="size-3.5" /></ActionBtn>
-                      </div>
+                      <BalanceRowMenu />
                     </td>
                   </tr>
                 ))}
