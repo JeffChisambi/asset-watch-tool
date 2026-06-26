@@ -3,7 +3,9 @@ import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard, Wrench, AlertTriangle, ClipboardCheck, Users, Building2,
   BarChart3, Bell, Search, Sun, ChevronDown, ShieldAlert,
+  Banknote, ChevronRight,
 } from "lucide-react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
   return (
@@ -103,11 +105,17 @@ function Sidebar() {
 }
 
 function Topbar() {
+  const location = useLocation();
+  const isFinance = location.pathname === "/finance";
+
   return (
     <div className="flex items-center gap-3 px-8 py-4 border-b border-border bg-card/50 backdrop-blur sticky top-0 z-10">
       <div className="relative flex-1 max-w-xl">
         <Search className="size-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-        <input placeholder="Search tickets, properties, technicians..." className="w-full rounded-full bg-muted/70 border border-transparent focus:border-primary/30 focus:bg-card outline-none pl-9 pr-16 py-2 text-sm" />
+        <input
+          placeholder={isFinance ? "Search tenants, properties, invoices..." : "Search tickets, properties, technicians..."}
+          className="w-full rounded-full bg-muted/70 border border-transparent focus:border-primary/30 focus:bg-card outline-none pl-9 pr-16 py-2 text-sm"
+        />
         <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground border border-border rounded px-1.5 py-0.5">⌘K</kbd>
       </div>
       <div className="ml-auto flex items-center gap-2">
@@ -116,7 +124,56 @@ function Topbar() {
           <Bell className="size-4" />
           <span className="absolute top-1.5 right-1.5 size-2 bg-destructive rounded-full" />
         </button>
-        <div className="size-9 rounded-full bg-gradient-to-br from-[oklch(0.75_0.13_45)] to-[oklch(0.55_0.18_25)] ring-2 ring-card" />
+
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger asChild>
+            <button className="size-9 rounded-full bg-gradient-to-br from-[oklch(0.75_0.13_45)] to-[oklch(0.55_0.18_25)] ring-2 ring-card focus:outline-none focus:ring-primary/40" />
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Portal>
+            <DropdownMenu.Content
+              align="end"
+              sideOffset={8}
+              className="z-50 w-56 rounded-xl border border-border bg-card shadow-lg p-1.5 animate-in fade-in-0 zoom-in-95"
+            >
+              <div className="px-3 py-2 mb-1 border-b border-border">
+                <p className="text-xs font-semibold text-foreground">Switch Dashboard</p>
+                <p className="text-[11px] text-muted-foreground mt-0.5">Testing mode</p>
+              </div>
+
+              <DropdownMenu.Item asChild>
+                <Link
+                  to="/"
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm cursor-pointer transition-colors outline-none select-none ${!isFinance ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"}`}
+                >
+                  <div className={`size-6 rounded-md grid place-items-center ${!isFinance ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`}>
+                    <Wrench className="size-3.5" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium">Operations</p>
+                    <p className="text-[11px] text-muted-foreground">Maintenance & tickets</p>
+                  </div>
+                  {!isFinance && <ChevronRight className="size-3.5 text-primary" />}
+                </Link>
+              </DropdownMenu.Item>
+
+              <DropdownMenu.Item asChild>
+                <Link
+                  to="/finance"
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm cursor-pointer transition-colors outline-none select-none ${isFinance ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"}`}
+                >
+                  <div className={`size-6 rounded-md grid place-items-center ${isFinance ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`}>
+                    <Banknote className="size-3.5" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium">Finance</p>
+                    <p className="text-[11px] text-muted-foreground">Rent, payments & leases</p>
+                  </div>
+                  {isFinance && <ChevronRight className="size-3.5 text-primary" />}
+                </Link>
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Portal>
+        </DropdownMenu.Root>
       </div>
     </div>
   );

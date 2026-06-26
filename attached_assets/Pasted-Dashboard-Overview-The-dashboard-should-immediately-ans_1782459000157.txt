@@ -1,0 +1,273 @@
+Dashboard Overview
+
+The dashboard should immediately answer these questions:
+
+How much rent has been collected?
+How much is still outstanding?
+Which tenants have overdue balances?
+Which lease payments are due soon?
+Which reminders have been sent today?
+1. Summary Cards
+
+These provide a quick overview of the current financial status.
+
+Card	Description
+Total Outstanding Balance	Total amount owed by all tenants
+Payments Due This Month	Number of tenants expected to pay this month
+Overdue Payments	Number of overdue tenant accounts
+Payment Reminders Sent	Reminders sent today or this month
+Collected This Month	Total rent received during the current month
+Upcoming Lease Renewals	Tenants whose lease period is nearing expiry
+
+Example:
+
+Outstanding Balance    MWK 8,450,000
+
+Collected This Month   MWK 23,700,000
+
+Overdue Tenants        16
+
+Due This Week          9
+
+Reminders Sent         28
+
+Lease Renewals         5
+2. Outstanding Balances
+
+A table showing tenants with unpaid balances.
+
+Tenant	Property	Balance	Due Date	Status
+John Banda	House A12	MWK 75,000	15 June	Overdue
+Grace Phiri	Flat B3	MWK 20,000	28 June	Outstanding
+
+Actions:
+
+View Tenant
+Record Payment
+Send Reminder
+View Payment History
+3. Upcoming Payments
+
+Displays tenants whose payment dates are approaching.
+
+Example:
+
+Due in 7 Days
+
+House A4
+Tenant: Peter James
+
+Rent:
+MWK 250,000
+
+Due:
+30 June
+
+[Send Reminder]
+
+The system can automatically highlight:
+
+Due in 30 days
+Due in 14 days
+Due in 7 days
+Due tomorrow
+4. Overdue Payments
+
+A dedicated section for overdue accounts.
+
+Example:
+
+Tenant          Days Overdue     Balance
+-----------------------------------------
+John Banda      14 Days          MWK 75,000
+
+Mary Phiri      5 Days           MWK 40,000
+
+The system should visually distinguish accounts by severity:
+
+1–7 days overdue
+8–30 days overdue
+More than 30 days overdue
+
+Actions:
+
+Send Reminder
+Call Tenant
+Add Internal Note
+Export List
+5. Payment Reminder Center
+
+Track reminders sent manually or automatically.
+
+Each reminder should record:
+
+Tenant
+
+Reminder Type
+
+Date Sent
+
+Delivery Method
+
+Status
+
+Example:
+
+John Banda
+
+Balance Reminder
+
+25 June
+
+SMS
+
+Delivered
+
+Supported reminder types include:
+
+Upcoming payment reminder
+Outstanding balance reminder
+Overdue payment notice
+Final reminder before escalation
+
+Delivery methods may include:
+
+In-app notification
+SMS
+Email
+6. Payment History
+
+View every payment made by tenants.
+
+Example:
+
+Tenant	Property	Amount	Payment Date	Method
+John Banda	House A12	MWK 250,000	1 June	Bank Transfer
+Grace Phiri	Flat B3	MWK 180,000	3 June	Mobile Money
+
+Filters:
+
+Date Range
+Property
+Tenant
+Payment Method
+7. Lease Expiry Monitor
+
+Tracks tenants approaching the end of their lease period.
+
+Example:
+
+Tenant	Property	Lease Ends	Days Remaining
+Peter James	House C2	15 July	19 Days
+Mary Banda	Flat D4	30 June	4 Days
+
+Actions:
+
+Send Renewal Reminder
+Contact Tenant
+View Lease Details
+8. Recent Financial Activity
+
+Displays a live feed of financial events.
+
+Example:
+
+09:10
+Payment received from House A12
+
+09:30
+Reminder sent to Flat B3
+
+10:15
+Balance updated for House C5
+
+11:05
+Lease renewal reminder sent to House D1
+9. Search and Filters
+
+Search by:
+
+Tenant Name
+Property
+Invoice Number
+Phone Number
+
+Filter by:
+
+Payment Status
+Property
+Date Range
+Balance Amount
+Lease Expiry
+Payment Method
+10. Reports
+
+Generate downloadable financial reports such as:
+
+Daily Payment Report
+Monthly Rent Collection Report
+Outstanding Balances Report
+Overdue Payments Report
+Lease Renewal Report
+Payment Reminder History
+Tenant Account Statement
+
+Support exports to PDF and Excel.
+
+11. Notifications
+
+The Finance/Admin user should receive alerts such as:
+
+10 payments become due tomorrow.
+
+Tenant John Banda is now 30 days overdue.
+
+Payment received from House A12.
+
+Lease for Flat C3 expires in 14 days.
+
+Automatic payment reminders completed successfully.
+12. Quick Actions
+
+Provide shortcuts for common tasks.
+
++ Record Payment
+
++ Send Payment Reminder
+
++ Generate Financial Report
+
++ View Overdue Accounts
+
++ Export Tenant Balances
+Suggested Dashboard Layout
+------------------------------------------------------------
+Summary Cards
+------------------------------------------------------------
+
+Outstanding Balances     | Upcoming Payments
+
+------------------------------------------------------------
+
+Overdue Payments         | Lease Expiry Monitor
+
+------------------------------------------------------------
+
+Payment Reminder Center  | Recent Financial Activity
+
+------------------------------------------------------------
+
+Payment History
+
+------------------------------------------------------------
+
+Reports & Export
+Additional Features
+
+To make the Finance/Admin dashboard more useful, consider adding these capabilities:
+
+Automated Reminder Scheduling: Configure reminders to be sent a set number of days before the due date, on the due date, and at regular intervals after the due date until payment is received.
+Partial Payment Tracking: Allow staff to record partial payments while automatically recalculating the remaining balance.
+Invoice and Receipt Management: Generate rent invoices, issue receipts for payments, and resend them to tenants when needed.
+Collection Analytics: Show monthly collection rates, outstanding debt trends, and payment performance by property to help management monitor cash flow.
+Tenant Account Statements: Generate a complete statement showing charges, payments, outstanding balances, and reminder history for each tenant.

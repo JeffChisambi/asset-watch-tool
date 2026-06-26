@@ -15,6 +15,7 @@ import { Route as TechniciansRouteImport } from './routes/technicians'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ManagersRouteImport } from './routes/managers'
+import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as EscalationsRouteImport } from './routes/escalations'
 import { Route as CompletionsRouteImport } from './routes/completions'
 import { Route as AnnouncementsRouteImport } from './routes/announcements'
@@ -51,6 +52,11 @@ const ManagersRoute = ManagersRouteImport.update({
   path: '/managers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FinanceRoute = FinanceRouteImport.update({
+  id: '/finance',
+  path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EscalationsRoute = EscalationsRouteImport.update({
   id: '/escalations',
   path: '/escalations',
@@ -83,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/announcements': typeof AnnouncementsRoute
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
+  '/finance': typeof FinanceRoute
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/announcements': typeof AnnouncementsRoute
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
+  '/finance': typeof FinanceRoute
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/announcements': typeof AnnouncementsRoute
   '/completions': typeof CompletionsRoute
   '/escalations': typeof EscalationsRoute
+  '/finance': typeof FinanceRoute
   '/managers': typeof ManagersRoute
   '/properties': typeof PropertiesRoute
   '/reports': typeof ReportsRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/announcements'
     | '/completions'
     | '/escalations'
+    | '/finance'
     | '/managers'
     | '/properties'
     | '/reports'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/announcements'
     | '/completions'
     | '/escalations'
+    | '/finance'
     | '/managers'
     | '/properties'
     | '/reports'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/announcements'
     | '/completions'
     | '/escalations'
+    | '/finance'
     | '/managers'
     | '/properties'
     | '/reports'
@@ -165,6 +177,7 @@ export interface RootRouteChildren {
   AnnouncementsRoute: typeof AnnouncementsRoute
   CompletionsRoute: typeof CompletionsRoute
   EscalationsRoute: typeof EscalationsRoute
+  FinanceRoute: typeof FinanceRoute
   ManagersRoute: typeof ManagersRoute
   PropertiesRoute: typeof PropertiesRoute
   ReportsRoute: typeof ReportsRoute
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ManagersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/finance': {
+      id: '/finance'
+      path: '/finance'
+      fullPath: '/finance'
+      preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/escalations': {
       id: '/escalations'
       path: '/escalations'
@@ -261,6 +281,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnnouncementsRoute: AnnouncementsRoute,
   CompletionsRoute: CompletionsRoute,
   EscalationsRoute: EscalationsRoute,
+  FinanceRoute: FinanceRoute,
   ManagersRoute: ManagersRoute,
   PropertiesRoute: PropertiesRoute,
   ReportsRoute: ReportsRoute,
