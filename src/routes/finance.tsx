@@ -64,13 +64,6 @@ function ActionBtn({ children, variant = "ghost" }: { children: React.ReactNode;
   return <button className={cls[variant]}>{children}</button>;
 }
 
-function SeverityDot({ days }: { days: number }) {
-  const cls =
-    days > 30 ? "bg-destructive" :
-    days > 7  ? "bg-warning" :
-                "bg-info";
-  return <span className={`size-2 rounded-full inline-block ${cls}`} />;
-}
 
 /* ─── mock data ───────────────────────────────────────── */
 const outstandingBalances = [
@@ -223,7 +216,7 @@ function FinanceDashboard() {
                     <td className="py-2.5 text-right font-semibold tabular-nums">{fmt(r.balance)}</td>
                     <td className="py-2.5 text-muted-foreground">{r.due}</td>
                     <td className="py-2.5">
-                      <Pill tone={r.status === "Overdue" ? "urgent" : "high"}>{r.status}</Pill>
+                      <span className={`text-xs font-semibold ${r.status === "Overdue" ? "text-foreground" : "text-muted-foreground font-normal"}`}>{r.status}</span>
                     </td>
                     <td className="py-2.5 pr-1">
                       <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition justify-end">
@@ -285,17 +278,14 @@ function FinanceDashboard() {
             </div>
             {overduePayments.map((r) => (
               <div key={r.tenant} className="flex items-center gap-3 py-2.5 hover:bg-muted/40 rounded-lg px-1 group transition">
-                <div className="flex-1 min-w-0 flex items-center gap-2">
-                  <SeverityDot days={r.days} />
-                  <div>
-                    <p className="text-sm font-medium leading-tight">{r.tenant}</p>
-                    <p className="text-xs text-muted-foreground">{r.property}</p>
-                  </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium leading-tight">{r.tenant}</p>
+                  <p className="text-xs text-muted-foreground">{r.property}</p>
                 </div>
                 <div className="w-24 text-center">
-                  <Pill tone={r.days > 30 ? "urgent" : r.days > 7 ? "high" : "normal"}>
+                  <span className={`text-xs tabular-nums ${r.days > 30 ? "font-bold text-foreground" : r.days > 7 ? "font-semibold text-foreground/70" : "font-medium text-muted-foreground"}`}>
                     {r.days} days
-                  </Pill>
+                  </span>
                 </div>
                 <span className="w-28 text-right text-sm font-semibold tabular-nums">{fmt(r.balance)}</span>
                 <div className="w-20 flex items-center gap-1 justify-end opacity-0 group-hover:opacity-100 transition">
@@ -305,11 +295,6 @@ function FinanceDashboard() {
                 </div>
               </div>
             ))}
-          </div>
-          <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground pt-3 border-t border-border">
-            <span className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-info inline-block" /> 1–7 days</span>
-            <span className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-warning inline-block" /> 8–30 days</span>
-            <span className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-destructive inline-block" /> 30+ days</span>
           </div>
         </SectionCard>
 
@@ -330,9 +315,9 @@ function FinanceDashboard() {
                 </div>
                 <span className="w-20 text-xs text-muted-foreground">{r.ends}</span>
                 <div className="w-24 text-center">
-                  <Pill tone={r.days <= 7 ? "urgent" : r.days <= 14 ? "high" : r.days <= 30 ? "normal" : "muted"}>
+                  <span className={`text-xs tabular-nums ${r.days <= 7 ? "font-bold text-foreground" : r.days <= 14 ? "font-semibold text-foreground/70" : "font-medium text-muted-foreground"}`}>
                     {r.days} days
-                  </Pill>
+                  </span>
                 </div>
                 <div className="w-16 flex items-center gap-1 justify-end opacity-0 group-hover:opacity-100 transition">
                   <button title="Send Renewal Reminder" className="size-7 grid place-items-center rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition"><Send className="size-3.5" /></button>
