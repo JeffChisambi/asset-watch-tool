@@ -63,8 +63,6 @@ function Managers() {
               <th className="text-left font-medium pb-2">Open tickets</th>
               <th className="text-left font-medium pb-2">Urgent</th>
               <th className="text-left font-medium pb-2">Completed</th>
-              <th className="text-left font-medium pb-2">Avg resolution</th>
-              <th className="text-right font-medium pb-2">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -85,12 +83,6 @@ function Managers() {
                     : <span className="text-xs text-muted-foreground">—</span>}
                 </td>
                 <td className="py-3 text-muted-foreground">{m.completed}</td>
-                <td className="py-3 text-muted-foreground">{m.avg}</td>
-                <td className="py-3 text-right">
-                  <Pill tone={m.urgent === 0 && m.open < 6 ? "success" : m.urgent > 0 ? "urgent" : "high"}>
-                    {m.urgent > 0 ? "Attention" : m.open < 6 ? "On track" : "Busy"}
-                  </Pill>
-                </td>
               </tr>
             ))}
           </tbody>
