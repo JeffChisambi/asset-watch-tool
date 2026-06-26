@@ -70,20 +70,15 @@ function Completions() {
         <table className="w-full text-sm">
           <thead className="text-[11px] uppercase tracking-wider text-muted-foreground">
             <tr className="border-b border-border">
-              <th className="text-left font-medium pb-2">ID</th>
               <th className="text-left font-medium pb-2">Job</th>
-              <th className="text-left font-medium pb-2">Technician</th>
               <th className="text-left font-medium pb-2">Manager</th>
-              <th className="text-left font-medium pb-2">Duration</th>
               <th className="text-left font-medium pb-2">Cost</th>
-              <th className="text-left font-medium pb-2">Rating</th>
               <th className="text-right font-medium pb-2">Status</th>
             </tr>
           </thead>
           <tbody>
             {jobs.map((j) => (
               <tr key={j.id} className="border-b border-border last:border-0 hover:bg-muted/40 transition-colors">
-                <td className="py-3 text-muted-foreground font-mono text-xs">{j.id}</td>
                 <td className="py-3">
                   <div className="flex items-center gap-2">
                     <span className="size-7 rounded-md bg-primary/10 grid place-items-center"><Wrench className="size-3.5 text-primary" /></span>
@@ -93,17 +88,8 @@ function Completions() {
                     </div>
                   </div>
                 </td>
-                <td className="py-3">{j.tech}</td>
                 <td className="py-3">{j.mgr}</td>
-                <td className="py-3 text-muted-foreground">{j.duration}</td>
                 <td className="py-3 font-semibold">{j.cost}</td>
-                <td className="py-3">
-                  {j.rating ? (
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold">
-                      <Star className="size-3 fill-warning text-warning" />{j.rating}.0
-                    </span>
-                  ) : <span className="text-xs text-muted-foreground">—</span>}
-                </td>
                 <td className="py-3 text-right">
                   <Pill tone={j.status === "approved" ? "success" : "high"}>
                     {j.status === "approved" ? <CheckCircle2 className="size-3" /> : <Clock className="size-3" />}
