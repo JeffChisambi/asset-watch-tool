@@ -82,7 +82,7 @@ function BalanceRowMenu() {
     <div ref={ref} className="relative flex justify-end">
       <button
         onClick={() => setOpen(o => !o)}
-        className="size-7 grid place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition opacity-0 group-hover:opacity-100"
+        className="size-7 grid place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition"
       >
         <MoreHorizontal className="size-4" />
       </button>
