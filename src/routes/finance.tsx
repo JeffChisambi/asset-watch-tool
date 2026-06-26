@@ -65,6 +65,44 @@ function ActionBtn({ children, variant = "ghost" }: { children: React.ReactNode;
   return <button className={cls[variant]}>{children}</button>;
 }
 
+function OverdueRowMenu() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function handle(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handle);
+    return () => document.removeEventListener("mousedown", handle);
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative flex justify-end">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="size-7 grid place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition"
+      >
+        <MoreHorizontal className="size-4" />
+      </button>
+      {open && (
+        <div className="absolute right-0 top-8 z-50 w-44 rounded-xl border border-border bg-card shadow-lg py-1">
+          <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-muted transition text-foreground" onClick={() => setOpen(false)}>
+            <Send className="size-3.5 text-muted-foreground" /> Send reminder
+          </button>
+          <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-muted transition text-foreground" onClick={() => setOpen(false)}>
+            <PhoneCall className="size-3.5 text-muted-foreground" /> Call tenant
+          </button>
+          <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-muted transition text-foreground" onClick={() => setOpen(false)}>
+            <StickyNote className="size-3.5 text-muted-foreground" /> Add note
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function BalanceRowMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -317,10 +355,8 @@ function FinanceDashboard() {
                   </span>
                 </div>
                 <span className="w-28 text-right text-sm font-semibold tabular-nums">{fmt(r.balance)}</span>
-                <div className="w-20 flex items-center gap-1 justify-end opacity-0 group-hover:opacity-100 transition">
-                  <button title="Send Reminder" className="size-7 grid place-items-center rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition"><Send className="size-3.5" /></button>
-                  <button title="Call Tenant" className="size-7 grid place-items-center rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition"><PhoneCall className="size-3.5" /></button>
-                  <button title="Add Note" className="size-7 grid place-items-center rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition"><StickyNote className="size-3.5" /></button>
+                <div className="w-8">
+                  <OverdueRowMenu />
                 </div>
               </div>
             ))}
