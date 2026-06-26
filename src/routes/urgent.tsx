@@ -54,7 +54,7 @@ function Urgent() {
         <div className="space-y-3">
           {urgentItems.map((u) => (
             <div key={u.id} className={`rounded-xl border p-4 flex flex-wrap items-center gap-4 ${u.over ? "border-destructive/30 bg-destructive/5" : "border-border bg-card"}`}>
-              <span className={`size-9 rounded-full grid place-items-center shrink-0 ${u.over ? "bg-destructive/15 text-destructive" : "bg-warning/15 text-warning-foreground"}`}>
+              <span className={`size-9 rounded-full grid place-items-center shrink-0 ${u.over ? "bg-destructive/15 text-destructive" : "bg-muted text-muted-foreground"}`}>
                 <Flame className="size-4" />
               </span>
               <div className="flex items-center gap-2 min-w-[120px]">
@@ -70,7 +70,7 @@ function Urgent() {
               </div>
               <div className="flex items-center gap-3">
                 <div className="text-right">
-                  <Pill tone={u.over ? "urgent" : "high"}>
+                  <Pill tone={u.over ? "urgent" : "muted"}>
                     <Clock className="size-3" />{u.time}
                   </Pill>
                   <p className="text-[10px] text-muted-foreground mt-1 text-center">SLA {u.sla}</p>
