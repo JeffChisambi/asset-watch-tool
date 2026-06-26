@@ -9,9 +9,63 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UrgentRouteImport } from './routes/urgent'
+import { Route as TicketsRouteImport } from './routes/tickets'
+import { Route as TechniciansRouteImport } from './routes/technicians'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as PropertiesRouteImport } from './routes/properties'
+import { Route as ManagersRouteImport } from './routes/managers'
+import { Route as EscalationsRouteImport } from './routes/escalations'
+import { Route as CompletionsRouteImport } from './routes/completions'
+import { Route as AnnouncementsRouteImport } from './routes/announcements'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as IndexRouteImport } from './routes/index'
 
+const UrgentRoute = UrgentRouteImport.update({
+  id: '/urgent',
+  path: '/urgent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TicketsRoute = TicketsRouteImport.update({
+  id: '/tickets',
+  path: '/tickets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechniciansRoute = TechniciansRouteImport.update({
+  id: '/technicians',
+  path: '/technicians',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesRoute = PropertiesRouteImport.update({
+  id: '/properties',
+  path: '/properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManagersRoute = ManagersRouteImport.update({
+  id: '/managers',
+  path: '/managers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EscalationsRoute = EscalationsRouteImport.update({
+  id: '/escalations',
+  path: '/escalations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompletionsRoute = CompletionsRouteImport.update({
+  id: '/completions',
+  path: '/completions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnnouncementsRoute = AnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnalyticsRoute = AnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
@@ -26,31 +80,164 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/completions': typeof CompletionsRoute
+  '/escalations': typeof EscalationsRoute
+  '/managers': typeof ManagersRoute
+  '/properties': typeof PropertiesRoute
+  '/reports': typeof ReportsRoute
+  '/technicians': typeof TechniciansRoute
+  '/tickets': typeof TicketsRoute
+  '/urgent': typeof UrgentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/completions': typeof CompletionsRoute
+  '/escalations': typeof EscalationsRoute
+  '/managers': typeof ManagersRoute
+  '/properties': typeof PropertiesRoute
+  '/reports': typeof ReportsRoute
+  '/technicians': typeof TechniciansRoute
+  '/tickets': typeof TicketsRoute
+  '/urgent': typeof UrgentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/analytics': typeof AnalyticsRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/completions': typeof CompletionsRoute
+  '/escalations': typeof EscalationsRoute
+  '/managers': typeof ManagersRoute
+  '/properties': typeof PropertiesRoute
+  '/reports': typeof ReportsRoute
+  '/technicians': typeof TechniciansRoute
+  '/tickets': typeof TicketsRoute
+  '/urgent': typeof UrgentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analytics'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/announcements'
+    | '/completions'
+    | '/escalations'
+    | '/managers'
+    | '/properties'
+    | '/reports'
+    | '/technicians'
+    | '/tickets'
+    | '/urgent'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analytics'
-  id: '__root__' | '/' | '/analytics'
+  to:
+    | '/'
+    | '/analytics'
+    | '/announcements'
+    | '/completions'
+    | '/escalations'
+    | '/managers'
+    | '/properties'
+    | '/reports'
+    | '/technicians'
+    | '/tickets'
+    | '/urgent'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/announcements'
+    | '/completions'
+    | '/escalations'
+    | '/managers'
+    | '/properties'
+    | '/reports'
+    | '/technicians'
+    | '/tickets'
+    | '/urgent'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalyticsRoute: typeof AnalyticsRoute
+  AnnouncementsRoute: typeof AnnouncementsRoute
+  CompletionsRoute: typeof CompletionsRoute
+  EscalationsRoute: typeof EscalationsRoute
+  ManagersRoute: typeof ManagersRoute
+  PropertiesRoute: typeof PropertiesRoute
+  ReportsRoute: typeof ReportsRoute
+  TechniciansRoute: typeof TechniciansRoute
+  TicketsRoute: typeof TicketsRoute
+  UrgentRoute: typeof UrgentRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/urgent': {
+      id: '/urgent'
+      path: '/urgent'
+      fullPath: '/urgent'
+      preLoaderRoute: typeof UrgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tickets': {
+      id: '/tickets'
+      path: '/tickets'
+      fullPath: '/tickets'
+      preLoaderRoute: typeof TicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technicians': {
+      id: '/technicians'
+      path: '/technicians'
+      fullPath: '/technicians'
+      preLoaderRoute: typeof TechniciansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties': {
+      id: '/properties'
+      path: '/properties'
+      fullPath: '/properties'
+      preLoaderRoute: typeof PropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/managers': {
+      id: '/managers'
+      path: '/managers'
+      fullPath: '/managers'
+      preLoaderRoute: typeof ManagersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/escalations': {
+      id: '/escalations'
+      path: '/escalations'
+      fullPath: '/escalations'
+      preLoaderRoute: typeof EscalationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/completions': {
+      id: '/completions'
+      path: '/completions'
+      fullPath: '/completions'
+      preLoaderRoute: typeof CompletionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/announcements': {
+      id: '/announcements'
+      path: '/announcements'
+      fullPath: '/announcements'
+      preLoaderRoute: typeof AnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/analytics': {
       id: '/analytics'
       path: '/analytics'
@@ -71,6 +258,15 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalyticsRoute: AnalyticsRoute,
+  AnnouncementsRoute: AnnouncementsRoute,
+  CompletionsRoute: CompletionsRoute,
+  EscalationsRoute: EscalationsRoute,
+  ManagersRoute: ManagersRoute,
+  PropertiesRoute: PropertiesRoute,
+  ReportsRoute: ReportsRoute,
+  TechniciansRoute: TechniciansRoute,
+  TicketsRoute: TicketsRoute,
+  UrgentRoute: UrgentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

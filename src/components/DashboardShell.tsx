@@ -2,7 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard, Wrench, AlertTriangle, ClipboardCheck, Users, Building2,
-  BarChart3, Bell, Search, Sun, ChevronDown, ShieldAlert, HeartPulse,
+  BarChart3, Bell, Search, Sun, ChevronDown, ShieldAlert,
 } from "lucide-react";
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
@@ -27,19 +27,18 @@ function Sidebar() {
 
   const nav: NavItem[] = [
     { icon: LayoutDashboard, label: "Dashboard", to: "/" },
-    { icon: Wrench, label: "Tickets", badge: "36" },
-    { icon: AlertTriangle, label: "Urgent", badge: "5" },
-    { icon: ClipboardCheck, label: "Completions" },
-    { icon: Users, label: "Managers" },
-    { icon: Users, label: "Technicians" },
-    { icon: Building2, label: "Properties" },
-    { icon: HeartPulse, label: "Property Health" },
+    { icon: Wrench, label: "Tickets", to: "/tickets", badge: "36" },
+    { icon: AlertTriangle, label: "Urgent", to: "/urgent", badge: "5" },
+    { icon: ClipboardCheck, label: "Completions", to: "/completions" },
+    { icon: Users, label: "Managers", to: "/managers" },
+    { icon: Users, label: "Technicians", to: "/technicians" },
+    { icon: Building2, label: "Properties", to: "/properties" },
   ];
   const ops: NavItem[] = [
     { icon: BarChart3, label: "Analytics", to: "/analytics" },
-    { icon: ShieldAlert, label: "Escalations" },
-    { icon: ClipboardCheck, label: "Reports" },
-    { icon: Bell, label: "Announcements" },
+    { icon: ShieldAlert, label: "Escalations", to: "/escalations" },
+    { icon: ClipboardCheck, label: "Reports", to: "/reports" },
+    { icon: Bell, label: "Announcements", to: "/announcements" },
   ];
 
   const isActive = (to?: string) => to ? path === to : false;
