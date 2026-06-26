@@ -151,7 +151,7 @@ function Dashboard() {
       </div>
 
       {/* Row: Trend + Most Day Active */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
         <SectionCard title="Maintenance Trend" className="lg:col-span-2"
           action={<div className="flex items-center gap-2 text-xs text-muted-foreground"><span className="size-2 rounded-full bg-primary" />Tickets created<span className="ml-3">Avg resolution <span className="text-foreground font-semibold ml-1">2.4d</span></span></div>}>
           <div className="flex items-end gap-6 mb-2">
