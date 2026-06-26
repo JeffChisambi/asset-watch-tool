@@ -233,21 +233,21 @@ function Dashboard() {
               <p className="text-xs text-success font-medium mt-0.5 inline-flex items-center gap-1"><ArrowUpRight className="size-3" />24.4% vs last period</p>
             </div>
             <TrendChart />
-            <div className="mt-5 grid grid-cols-3 gap-3 border-t border-border pt-4">
-              <div className="rounded-xl border border-border p-3">
-                <p className="text-xs text-muted-foreground">Plumbing</p>
-                <p className="text-lg font-bold mt-1">2,884</p>
-                <div className="h-1 rounded-full bg-info mt-2" />
+            <div className="mt-4 grid grid-cols-3 gap-2 border-t border-border pt-3">
+              <div className="rounded-lg border border-border px-2.5 py-2">
+                <p className="text-[11px] text-muted-foreground">Plumbing</p>
+                <p className="text-sm font-bold mt-0.5">2,884</p>
+                <div className="h-0.5 rounded-full bg-info mt-1.5" />
               </div>
-              <div className="rounded-xl border border-border p-3">
-                <p className="text-xs text-muted-foreground">Electrical</p>
-                <p className="text-lg font-bold mt-1">1,432</p>
-                <div className="h-1 rounded-full bg-success mt-2" />
+              <div className="rounded-lg border border-border px-2.5 py-2">
+                <p className="text-[11px] text-muted-foreground">Electrical</p>
+                <p className="text-sm font-bold mt-0.5">1,432</p>
+                <div className="h-0.5 rounded-full bg-success mt-1.5" />
               </div>
-              <div className="rounded-xl border border-border p-3">
-                <p className="text-xs text-muted-foreground">HVAC / Other</p>
-                <p className="text-lg font-bold mt-1">562</p>
-                <div className="h-1 rounded-full bg-warning mt-2" />
+              <div className="rounded-lg border border-border px-2.5 py-2">
+                <p className="text-[11px] text-muted-foreground">HVAC / Other</p>
+                <p className="text-sm font-bold mt-0.5">562</p>
+                <div className="h-0.5 rounded-full bg-warning mt-1.5" />
               </div>
             </div>
           </SectionCard>
