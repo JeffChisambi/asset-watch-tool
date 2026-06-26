@@ -51,9 +51,9 @@ function Completions() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
           { icon: CheckCircle2, label: "Approved", value: String(jobs.filter((j) => j.status === "approved").length), tone: "bg-success/10 text-success" },
-          { icon: Clock, label: "Pending Review", value: String(pending), tone: "bg-warning/20 text-warning-foreground" },
-          { icon: Wrench, label: "Total Jobs", value: String(jobs.length), tone: "bg-primary/10 text-primary" },
-          { icon: CheckCircle2, label: "Total Cost", value: `MK ${(totalCost / 1000).toFixed(0)}k`, tone: "bg-info/10 text-info" },
+          { icon: Clock, label: "Pending Review", value: String(pending), tone: "bg-muted text-muted-foreground" },
+          { icon: Wrench, label: "Total Jobs", value: String(jobs.length), tone: "bg-muted text-muted-foreground" },
+          { icon: CheckCircle2, label: "Total Cost", value: `MK ${(totalCost / 1000).toFixed(0)}k`, tone: "bg-muted text-muted-foreground" },
         ].map(({ icon: Icon, label, value, tone }) => (
           <div key={label} className="rounded-2xl bg-card border border-border p-4 flex items-center gap-3 shadow-[0_1px_2px_rgba(16,24,40,0.04)]">
             <span className={`size-9 grid place-items-center rounded-full ${tone}`}><Icon className="size-4" /></span>
@@ -66,7 +66,7 @@ function Completions() {
       </div>
 
       <SectionCard title="Completion Records"
-        action={pending > 0 ? <span className="text-xs text-warning-foreground font-medium bg-warning/20 px-2 py-0.5 rounded-full">{pending} awaiting approval</span> : undefined}>
+        action={pending > 0 ? <span className="text-xs text-muted-foreground font-medium bg-muted px-2 py-0.5 rounded-full">{pending} awaiting approval</span> : undefined}>
         <table className="w-full text-sm">
           <thead className="text-[11px] uppercase tracking-wider text-muted-foreground">
             <tr className="border-b border-border">
@@ -81,7 +81,7 @@ function Completions() {
               <tr key={j.id} className="border-b border-border last:border-0 hover:bg-muted/40 transition-colors">
                 <td className="py-3">
                   <div className="flex items-center gap-2">
-                    <span className="size-7 rounded-md bg-primary/10 grid place-items-center"><Wrench className="size-3.5 text-primary" /></span>
+                    <span className="size-7 rounded-md bg-muted grid place-items-center"><Wrench className="size-3.5 text-muted-foreground" /></span>
                     <div>
                       <p className="font-medium leading-tight">{j.issue}</p>
                       <p className="text-xs text-muted-foreground">{j.prop}</p>
@@ -91,7 +91,7 @@ function Completions() {
                 <td className="py-3">{j.mgr}</td>
                 <td className="py-3 font-semibold">{j.cost}</td>
                 <td className="py-3 text-right">
-                  <Pill tone={j.status === "approved" ? "success" : "high"}>
+                  <Pill tone={j.status === "approved" ? "success" : "muted"}>
                     {j.status === "approved" ? <CheckCircle2 className="size-3" /> : <Clock className="size-3" />}
                     {j.status === "approved" ? "Approved" : "Review"}
                   </Pill>
