@@ -57,7 +57,7 @@ function Analytics() {
 
       {/* Row: Completion Reports + Tech performance */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <SectionCard title="Completion Reports" className="lg:col-span-2"
+        <SectionCard title="Completion Reports" className="lg:col-span-3"
           action={<div className="flex items-center gap-2"><span className="text-xs text-muted-foreground">Today</span><ChevronDown className="size-3 text-muted-foreground" /></div>}>
           <table className="w-full text-sm">
             <thead className="text-[11px] uppercase tracking-wider text-muted-foreground">
@@ -96,24 +96,6 @@ function Analytics() {
               ))}
             </tbody>
           </table>
-        </SectionCard>
-
-        <SectionCard title="Technician Performance">
-          <ul className="space-y-3">
-            {techs.map((t) => (
-              <li key={t.n} className="flex items-center gap-3">
-                <div className={`size-9 rounded-full bg-gradient-to-br ${t.color} ring-2 ring-card`} />
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate">{t.n}</p>
-                  <p className="text-xs text-muted-foreground">{t.jobs} jobs · avg {t.avg} · {t.over} overdue</p>
-                </div>
-                <span className="inline-flex items-center gap-1 text-xs font-semibold">
-                  <Star className="size-3 fill-warning text-warning" />{t.sat}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <button className="mt-4 w-full text-sm font-medium rounded-lg border border-border py-2 hover:bg-muted">View all technicians</button>
         </SectionCard>
       </div>
 
