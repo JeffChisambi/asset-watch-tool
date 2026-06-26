@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Wrench, Flame, Home, Clock, CheckCircle2,
-  ArrowUpRight, ArrowDownRight, Eye, Phone,
+  ArrowUpRight, ArrowDownRight,
   ChevronRight, Calendar, Plus, Download, ChevronDown,
 } from "lucide-react";
 import { DashboardShell, SectionCard, Pill } from "../components/DashboardShell";
@@ -223,11 +223,7 @@ function Dashboard() {
                     <Pill tone={u.over ? "urgent" : "high"}>{u.over && <Flame className="size-3" />}{u.time}</Pill>
                   </td>
                   <td className="py-3 text-right">
-                    <div className="inline-flex items-center gap-1">
-                      <button className="size-7 rounded-md hover:bg-muted text-muted-foreground"><Eye className="size-3.5 mx-auto" /></button>
-                      <button className="size-7 rounded-md hover:bg-muted text-muted-foreground"><Phone className="size-3.5 mx-auto" /></button>
-                      <button className="text-xs px-2 py-1 rounded-md bg-destructive/10 text-destructive font-medium">Escalate</button>
-                    </div>
+                    <button className="text-xs px-2 py-1 rounded-md bg-destructive/10 text-destructive font-medium">Escalate</button>
                   </td>
                 </tr>
               ))}
