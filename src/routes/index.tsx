@@ -241,49 +241,6 @@ function Dashboard() {
         </SectionCard>
       </div>
 
-      {/* Property Health */}
-      <SectionCard title="Property Health"
-        action={<div className="flex items-center gap-2"><button className="text-xs text-muted-foreground hover:text-foreground">Filter</button><button className="text-xs text-primary font-medium inline-flex items-center gap-1">All properties<ChevronRight className="size-3" /></button></div>}>
-        <table className="w-full text-sm">
-          <thead className="text-[11px] uppercase tracking-wider text-muted-foreground">
-            <tr className="border-b border-border">
-              <th className="text-left font-medium pb-2">Property</th>
-              <th className="text-left font-medium pb-2">Open</th>
-              <th className="text-left font-medium pb-2">This month</th>
-              <th className="text-left font-medium pb-2">Common issue</th>
-              <th className="text-left font-medium pb-2">Health</th>
-              <th className="text-right font-medium pb-2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { p: "House A12", o: 20, m: 32, c: "Plumbing", h: 28 },
-              { p: "House B24", o: 4, m: 9, c: "Electrical", h: 72 },
-              { p: "Flats C8", o: 16, m: 24, c: "Water supply", h: 40 },
-              { p: "Block E2", o: 7, m: 14, c: "HVAC", h: 58 },
-              { p: "House D9", o: 11, m: 19, c: "Sewer", h: 35 },
-            ].map((r) => (
-              <tr key={r.p} className="border-b border-border last:border-0">
-                <td className="py-3 font-medium">{r.p}</td>
-                <td className="py-3"><Pill tone={r.o > 10 ? "urgent" : "muted"}>{r.o}</Pill></td>
-                <td className="py-3 text-muted-foreground">{r.m}</td>
-                <td className="py-3">{r.c}</td>
-                <td className="py-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-32 h-1.5 rounded-full bg-muted overflow-hidden">
-                      <div className={`h-full ${r.h > 60 ? "bg-success" : r.h > 40 ? "bg-warning" : "bg-destructive"}`} style={{ width: `${r.h}%` }} />
-                    </div>
-                    <span className="text-xs text-muted-foreground">{r.h}%</span>
-                  </div>
-                </td>
-                <td className="py-3 text-right">
-                  <button className="text-xs px-3 py-1 rounded-md border border-border hover:bg-muted">Inspect</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </SectionCard>
     </DashboardShell>
   );
 }
